@@ -8,18 +8,33 @@
 import UIKit
 import WebKit
 
+@available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController {
+    
+    var webView:WKWebView!
+    var backButton: UIBarButtonItem!
+    var forwardButton: UIBarButtonItem!
+    var reloadButton: UIBarButtonItem!
+    
     
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupWebView()
+        
+        
+        backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(forwardButtonAction))
+        
+        forwardButton = UIBarButtonItem(image: UIImage(systemName: "arrow.right.circle"),style: .plain,  target: self,  action: #selector(backButtonAction))
+    
+        reloadButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise.circle"),style: .plain,  target: self,  action: #selector(reloadButtonAction))
+        
+        navigationItem.rightBarButtonItems = [reloadButton,forwardButton , backButton]
     }
     
     func setupWebView() {
-        
-        let webView = WKWebView()
+        webView = WKWebView()
         webView.frame = view.bounds
         
         view.addSubview(webView)
@@ -38,13 +53,31 @@ public class InAppBrowserViewController: UIViewController {
         }
     }
     
+    
+    @objc func forwardButtonAction() {
+        if webView.canGoBack{
+            webView.goBack()
+        }
+    }
+    
+    @objc func backButtonAction() {
+        if webView.canGoForward{
+            webView.goForward()
+        }
+    }
+    
+    @objc func reloadButtonAction() {
+        webView.reload()
+    }
+    
+    
 }
 
 
 
 
 
-    
-    
-    
+
+
+
 
