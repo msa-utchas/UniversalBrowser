@@ -39,8 +39,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         topBackButton.isEnabled = false
         bottomBackButton.isEnabled = false
         
-        topForwardButton.isEnabled = true
-        bottomForwardButton.isEnabled = true
+        topForwardButton.isEnabled = false
+        bottomForwardButton.isEnabled = false
         
         navigationController?.navigationBar.isHidden = true
         if let url = URL(string: "https://www.apple.com") {
@@ -50,14 +50,14 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     }
     
     func forwardButtonAction() {
-        if webView.canGoBack{
-            webView.goBack()
+        if webView.canGoForward{
+            webView.goForward()
         }
     }
     
     func backButtonAction() {
-        if webView.canGoForward{
-            webView.goForward()
+        if webView.canGoBack{
+            webView.goBack()
         }
     }
     
@@ -115,63 +115,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             bottomForwardButton.isEnabled = true
         }
         else{
-            topForwardButton.isEnabled = true
-            bottomForwardButton.isEnabled = true
+            topForwardButton.isEnabled = false
+            bottomForwardButton.isEnabled = false
         }
     }
 }
 
-
-
-
-
-
-
-
-
-//        setupWebView()
-//        //hide navigationController
-//        navigationController?.navigationBar.isHidden = true
-//
-//
-//        backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(forwardButtonAction))
-//
-//        forwardButton = UIBarButtonItem(image: UIImage(systemName: "arrow.right.circle"),style: .plain,  target: self,  action: #selector(backButtonAction))
-//
-//        reloadButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise.circle"),style: .plain,  target: self,  action: #selector(reloadButtonAction))
-//
-//        navigationItem.rightBarButtonItems = [reloadButton,forwardButton , backButton]
-//    }
-    
-//    func setupWebView() {
-//        webView = WKWebView()
-//        webView.frame = view.bounds
-//
-//        view.addSubview(webView)
-//        webView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let guide = view.safeAreaLayoutGuide
-//        NSLayoutConstraint.activate([
-//            webView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-//            webView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-//            webView.topAnchor.constraint(equalTo: guide.topAnchor),
-//            webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
-//        ])
-//
-//        if let url = URL(string: "https://www.apple.com") {
-//            let request = URLRequest(url: url)
-//            webView.load(request)
-//        }
-//
-//            let button = UIButton(type: .system)
-//            button.setTitle("My Button", for: .normal)
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//            button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-//            view.addSubview(button)
-//
-//            NSLayoutConstraint.activate([
-//                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//                button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -20) // Adjust the constant for desired vertical position
-//            ])
-//    }
-    
