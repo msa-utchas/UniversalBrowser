@@ -12,6 +12,12 @@ public enum NavigationType {
     case bottom
 }
 
+public enum ButtonConfiguration {
+    case allButtons
+    case backAndForward
+    case reload
+}
+
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
@@ -41,6 +47,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _forwardButtonImage: UIImage? = UIImage(systemName: "arrow.right.circle")
     private var _backButtonImage: UIImage? = UIImage(systemName: "arrow.left.circle")
     private var _reloadButtonImage: UIImage? = UIImage(systemName: "arrow.clockwise.circle")
+    private var _buttonConfiguration: ButtonConfiguration = .allButtons
 
 
     public override func viewDidLoad() {
@@ -160,6 +167,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     public func setReloadButtonImage(image: UIImage?) {
         _reloadButtonImage = image
     }
+    public func setButtonConfiguration(configuration: ButtonConfiguration) {
+        _buttonConfiguration = configuration
+    }
     
     func resizeImage(image: UIImage?) -> UIImage? {
   
@@ -183,6 +193,18 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         bottomBackButton.setImage(_backButtonImage, for: .normal)
         bottomReloadButton.setImage(_reloadButtonImage, for: .normal)
 
+        switch _buttonConfiguration {
+        case .allButtons:
+            break
+        case .backAndForward:
+            topReloadButton.isHidden = true
+            bottomReloadButton.isHidden = true
+        case .reload:
+            topForwardButton.isHidden = true
+            topBackButton.isHidden = true
+            bottomForwardButton.isHidden = true
+            bottomBackButton.isHidden = true
+        }
         switch _navigationType {
         case .top:
             bottomViewHeightConstraint.constant = 0
