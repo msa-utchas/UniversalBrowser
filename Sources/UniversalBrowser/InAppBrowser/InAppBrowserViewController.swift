@@ -52,6 +52,17 @@ public class InAppBrowserViewController: UIViewController {
             let request = URLRequest(url: url)
             webView.load(request)
         }
+        // Create a UIButton
+            let button = UIButton(type: .system)
+            button.setTitle("My Button", for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(button)
+
+            // Add constraints to center the button at the bottom
+            NSLayoutConstraint.activate([
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -20) // Adjust the constant for desired vertical position
+            ])
     }
     
     
