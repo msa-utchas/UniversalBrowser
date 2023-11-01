@@ -9,84 +9,116 @@ import UIKit
 import WebKit
 
 @available(iOS 13.0, *)
-public class InAppBrowserViewController: UIViewController {
+public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
 
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var webView: WKWebView!
     
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var topExitButton: UIButton!
     @IBOutlet weak var topForwardButton: UIButton!
     @IBOutlet weak var topBackButton: UIButton!
     @IBOutlet weak var topReloadButton: UIButton!
+    
     @IBOutlet weak var bottomForwardButton: UIButton!
     @IBOutlet weak var bottomBackButton: UIButton!
     @IBOutlet weak var bottomReloadButton: UIButton!
+    
+    @IBOutlet weak var topExitButton: UIButton!
     @IBOutlet weak var flottingExitButton: UIButton!
     
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        
+        topBackButton.isEnabled = false
+        bottomBackButton.isEnabled = false
+        
+        topForwardButton.isEnabled = true
+        bottomForwardButton.isEnabled = true
+        
+        navigationController?.navigationBar.isHidden = true
         if let url = URL(string: "https://www.apple.com") {
             let request = URLRequest(url: url)
             webView.load(request)
         }
     }
     
-    @objc func forwardButtonAction() {
+    func forwardButtonAction() {
         if webView.canGoBack{
             webView.goBack()
         }
     }
     
-    @objc func backButtonAction() {
+    func backButtonAction() {
         if webView.canGoForward{
             webView.goForward()
         }
     }
     
-    @objc func reloadButtonAction() {
+    func reloadButtonAction() {
         webView.reload()
     }
-    @objc func buttonTapped() {
+    func exitButtonAction() {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func topExitButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the topExitButton tap
+        exitButtonAction()
     }
 
     @IBAction func topForwardButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the topForwardButton tap
+        forwardButtonAction()
     }
 
     @IBAction func topBackButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the topBackButton tap
+        backButtonAction()
     }
 
     @IBAction func topReloadButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the topReloadButton tap
+        reloadButtonAction()
     }
 
     @IBAction func bottomForwardButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the bottomForwardButton tap
+        forwardButtonAction()
     }
 
     @IBAction func bottomBackButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the bottomBackButton tap
+       backButtonAction()
     }
 
     @IBAction func bottomReloadButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the bottomReloadButton tap
+        reloadButtonAction()
+        
     }
 
     @IBAction func flottingExitButtonTapped(_ sender: UIButton) {
-        // Add your code here to handle the flottingExitButton tap
+        exitButtonAction()
     }
 
-    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if webView.canGoBack{
+            topBackButton.isEnabled = true
+            bottomBackButton.isEnabled = true
+        }
+        else{
+            topBackButton.isEnabled = false
+            bottomBackButton.isEnabled = false
+        }
+        if webView.canGoForward{
+            topForwardButton.isEnabled = true
+            bottomForwardButton.isEnabled = true
+        }
+        else{
+            topForwardButton.isEnabled = true
+            bottomForwardButton.isEnabled = true
+        }
+    }
 }
 
 
@@ -109,7 +141,7 @@ public class InAppBrowserViewController: UIViewController {
 //        reloadButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise.circle"),style: .plain,  target: self,  action: #selector(reloadButtonAction))
 //
 //        navigationItem.rightBarButtonItems = [reloadButton,forwardButton , backButton]
-    }
+//    }
     
 //    func setupWebView() {
 //        webView = WKWebView()
