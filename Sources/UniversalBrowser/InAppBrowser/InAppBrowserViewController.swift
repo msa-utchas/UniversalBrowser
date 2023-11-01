@@ -82,7 +82,7 @@ public class InAppBrowserViewController: UIViewController {
         webView.reload()
     }
     @objc func buttonTapped() {
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }
