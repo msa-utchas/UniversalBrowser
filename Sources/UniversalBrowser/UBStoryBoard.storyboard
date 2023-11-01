@@ -33,6 +33,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="back">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="12"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="topExitButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Xaf-mS-ivX"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daa-uU-oRf">
                                                 <rect key="frame" x="246" y="0.0" width="139.66666666666663" height="35"/>
@@ -45,6 +48,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward.circle" catalog="system" title=""/>
+                                                        <connections>
+                                                            <action selector="topBackButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TrP-8g-cjI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVy-2t-lrh">
                                                         <rect key="frame" x="45" y="0.0" width="45" height="35"/>
@@ -53,6 +59,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="arrow.right.circle" catalog="system" title=""/>
+                                                        <connections>
+                                                            <action selector="topForwardButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Q4r-Ko-wV3"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGT-m2-drs">
                                                         <rect key="frame" x="90" y="0.0" width="49.666666666666657" height="35"/>
@@ -62,6 +71,9 @@
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise.circle" catalog="system" title=""/>
+                                                        <connections>
+                                                            <action selector="topReloadButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="x7c-aj-aAN"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -91,6 +103,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="arrow.backward.circle" catalog="system" title=""/>
+                                                <connections>
+                                                    <action selector="bottomBackButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1qn-ed-HWh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iak-4X-ua2">
                                                 <rect key="frame" x="35" y="0.0" width="35" height="35"/>
@@ -100,6 +115,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="arrow.right.circle" catalog="system" title=""/>
+                                                <connections>
+                                                    <action selector="bottomForwardButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="amW-jg-4H4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ud-6N-8Wm">
                                                 <rect key="frame" x="70" y="0.0" width="50" height="35"/>
@@ -109,6 +127,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise.circle" catalog="system" title=""/>
+                                                <connections>
+                                                    <action selector="bottomReloadButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nez-jt-9lP"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -138,6 +159,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="back">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="12"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="flottingExitButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lzZ-PW-y6i"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -158,6 +182,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomBackButton" destination="ZFn-pX-PKM" id="KUb-CZ-ZMo"/>
+                        <outlet property="bottomForwardButton" destination="iak-4X-ua2" id="2Lv-Mc-kMC"/>
+                        <outlet property="bottomReloadButton" destination="0ud-6N-8Wm" id="rab-hi-MYF"/>
+                        <outlet property="bottomView" destination="GzR-CY-wyk" id="FSo-pc-2RI"/>
+                        <outlet property="flottingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
+                        <outlet property="topBackButton" destination="WSi-8s-a9W" id="mEc-xe-DVG"/>
+                        <outlet property="topExitButton" destination="fGJ-QR-xty" id="SFP-5x-YQ4"/>
+                        <outlet property="topForwardButton" destination="uVy-2t-lrh" id="35h-WR-OTJ"/>
+                        <outlet property="topReloadButton" destination="EGT-m2-drs" id="pH5-PF-kkh"/>
+                        <outlet property="topView" destination="xqN-Jy-m7Y" id="KCl-PQ-bX4"/>
                         <outlet property="webView" destination="wOb-CN-tZT" id="H0i-c3-fx4"/>
                     </connections>
                 </viewController>
