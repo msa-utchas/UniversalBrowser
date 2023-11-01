@@ -186,6 +186,7 @@
                         <outlet property="bottomForwardButton" destination="iak-4X-ua2" id="2Lv-Mc-kMC"/>
                         <outlet property="bottomReloadButton" destination="0ud-6N-8Wm" id="rab-hi-MYF"/>
                         <outlet property="bottomView" destination="GzR-CY-wyk" id="FSo-pc-2RI"/>
+                        <outlet property="bottomViewHeightConstraint" destination="LVe-Lr-Vce" id="jLH-BL-ciL"/>
                         <outlet property="flottingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
                         <outlet property="topBackButton" destination="WSi-8s-a9W" id="mEc-xe-DVG"/>
                         <outlet property="topExitButton" destination="fGJ-QR-xty" id="SFP-5x-YQ4"/>

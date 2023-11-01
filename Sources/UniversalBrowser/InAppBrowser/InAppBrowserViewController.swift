@@ -12,6 +12,7 @@ import WebKit
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
 
+    @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var webView: WKWebView!
@@ -41,6 +42,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
         topForwardButton.isEnabled = false
         bottomForwardButton.isEnabled = false
+        
+        bottomViewHeightConstraint.constant = 0
         
         navigationController?.navigationBar.isHidden = true
         if let url = URL(string: "https://www.apple.com") {
