@@ -154,12 +154,22 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         _forwardButtonImage = image
     }
     public func setBackButtonImage(image: UIImage?) {
-        _backButtonImage = image
+
+        _backButtonImage = resizeImage(image: image)
     }
     public func setReloadButtonImage(image: UIImage?) {
         _reloadButtonImage = image
     }
-
+    
+    func resizeImage(image: UIImage?) -> UIImage? {
+  
+        let newSize = CGSize(width: 30, height: 30)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image?.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 
     func setupUI(){
 
