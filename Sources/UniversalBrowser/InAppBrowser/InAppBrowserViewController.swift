@@ -10,7 +10,6 @@ import WebKit
 
 public class InAppBrowserViewController: UIViewController {
     
-    public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "DemoVC") as! InAppBrowserViewController
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
     
     public override func viewDidLoad() {
