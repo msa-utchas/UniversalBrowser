@@ -11,7 +11,8 @@ import WebKit
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController {
     
-    var webView:WKWebView!
+
+    @IBOutlet weak var webView: WKWebView!
     var backButton: UIBarButtonItem!
     var forwardButton: UIBarButtonItem!
     var reloadButton: UIBarButtonItem!
@@ -21,6 +22,10 @@ public class InAppBrowserViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        if let url = URL(string: "https://www.apple.com") {
+                    let request = URLRequest(url: url)
+                    webView.load(request)
+                }
 //        setupWebView()
 //        //hide navigationController
 //        navigationController?.navigationBar.isHidden = true
@@ -35,37 +40,37 @@ public class InAppBrowserViewController: UIViewController {
 //        navigationItem.rightBarButtonItems = [reloadButton,forwardButton , backButton]
     }
     
-    func setupWebView() {
-        webView = WKWebView()
-        webView.frame = view.bounds
-        
-        view.addSubview(webView)
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let guide = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            webView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            webView.topAnchor.constraint(equalTo: guide.topAnchor),
-            webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
-        ])
-        
-        if let url = URL(string: "https://www.apple.com") {
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
-
-            let button = UIButton(type: .system)
-            button.setTitle("My Button", for: .normal)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-            view.addSubview(button)
-        
-            NSLayoutConstraint.activate([
-                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -20) // Adjust the constant for desired vertical position
-            ])
-    }
+//    func setupWebView() {
+//        webView = WKWebView()
+//        webView.frame = view.bounds
+//        
+//        view.addSubview(webView)
+//        webView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        let guide = view.safeAreaLayoutGuide
+//        NSLayoutConstraint.activate([
+//            webView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+//            webView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+//            webView.topAnchor.constraint(equalTo: guide.topAnchor),
+//            webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+//        ])
+//        
+//        if let url = URL(string: "https://www.apple.com") {
+//            let request = URLRequest(url: url)
+//            webView.load(request)
+//        }
+//
+//            let button = UIButton(type: .system)
+//            button.setTitle("My Button", for: .normal)
+//            button.translatesAutoresizingMaskIntoConstraints = false
+//            button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+//            view.addSubview(button)
+//        
+//            NSLayoutConstraint.activate([
+//                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -20) // Adjust the constant for desired vertical position
+//            ])
+//    }
     
     
     @objc func forwardButtonAction() {

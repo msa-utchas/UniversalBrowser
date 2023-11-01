@@ -157,6 +157,9 @@
                             <constraint firstItem="HJr-MM-SL7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ts4-Hd-uKO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="wOb-CN-tZT" id="H0i-c3-fx4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
