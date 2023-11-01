@@ -7,14 +7,17 @@
 
 import UIKit
 import WebKit
+public enum NavigationType {
+    case top
+    case bottom
+}
 
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
-
+    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var webView: WKWebView!
     
@@ -31,9 +34,14 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
     
+    private var _uiBackgroundColor: UIColor = .white
+    private var _navigationType: NavigationType = .top
+    private var _isFlotingExitButtonElabled: Bool = false
+
+
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -126,6 +134,30 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         else{
             topForwardButton.isEnabled = false
             bottomForwardButton.isEnabled = false
+        }
+    }
+
+    public func setUIBackgroundColor(color: UIColor) {
+        _uiBackgroundColor = color
+    }
+    public func setNavigationType(type: NavigationType) {
+        _navigationType = type
+    }
+    public func setFlotingExitButtonElabled(isElabled: Bool) {
+        _isFlotingExitButtonElabled = isElabled
+    }
+
+    func setupUI(){
+        backgroundView.backgroundColor = _uiBackgroundColor
+        flottingExitButton.isHidden = !_isFlotingExitButtonElabled
+        switch _navigationType {
+        case .top:
+            bottomViewHeightConstraint.constant = 0
+            bottomView.isHidden = true
+        case .bottom:
+            topForwardButton.isHidden = true
+            topBackButton.isHidden = true
+            topReloadButton.isHidden = true
         }
     }
 }
