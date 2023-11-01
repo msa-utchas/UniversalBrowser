@@ -36,7 +36,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     @IBOutlet weak var bottomReloadButton: UIButton!
     
     @IBOutlet weak var topExitButton: UIButton!
-    @IBOutlet weak var flottingExitButton: UIButton!
+    @IBOutlet weak var floatingExitButton: UIButton!
     
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
     
@@ -184,7 +184,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     func setupUI(){
 
         backgroundView.backgroundColor = _uiBackgroundColor
-        flottingExitButton.isHidden = !_isFloatingButtonEnabled
+        floatingExitButton.isHidden = !_isFloatingButtonEnabled
+
+        floatingExitButton.layer.cornerRadius = floatingExitButton.frame.height / 2
+        floatingExitButton.layer.masksToBounds = true
+        floatingExitButton.backgroundColor = .red
         
         topForwardButton.setImage(_forwardButtonImage, for: .normal)
         topBackButton.setImage(_backButtonImage, for: .normal)

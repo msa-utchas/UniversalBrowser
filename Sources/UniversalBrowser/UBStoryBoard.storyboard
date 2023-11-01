@@ -98,7 +98,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-MM-SL7">
-                                <rect key="frame" x="156.66666666666666" y="747" width="80" height="35"/>
+                                <rect key="frame" x="156.66666666666666" y="727" width="80" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="GhM-dM-nC5"/>
                                     <constraint firstAttribute="height" constant="35" id="xuR-XP-8K9"/>
@@ -167,7 +167,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GzR-CY-wyk" firstAttribute="top" secondItem="HJr-MM-SL7" secondAttribute="bottom" constant="10" id="2L3-bj-N3Y"/>
+                            <constraint firstItem="GzR-CY-wyk" firstAttribute="top" secondItem="HJr-MM-SL7" secondAttribute="bottom" constant="30" id="2L3-bj-N3Y"/>
                             <constraint firstItem="wOb-CN-tZT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7p6-Vr-smz"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="top" secondItem="wOb-CN-tZT" secondAttribute="bottom" id="FLh-Bq-SsT"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="HC3-W6-64J"/>
@@ -188,7 +188,7 @@
                         <outlet property="bottomReloadButton" destination="0ud-6N-8Wm" id="rab-hi-MYF"/>
                         <outlet property="bottomView" destination="GzR-CY-wyk" id="bvW-fa-tD1"/>
                         <outlet property="bottomViewHeightConstraint" destination="LVe-Lr-Vce" id="jLH-BL-ciL"/>
-                        <outlet property="flottingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
+                        <outlet property="floatingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
                         <outlet property="topBackButton" destination="WSi-8s-a9W" id="mEc-xe-DVG"/>
                         <outlet property="topExitButton" destination="fGJ-QR-xty" id="SFP-5x-YQ4"/>
                         <outlet property="topForwardButton" destination="uVy-2t-lrh" id="35h-WR-OTJ"/>
