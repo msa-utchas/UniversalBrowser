@@ -12,6 +12,7 @@ import WebKit
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
 
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet var backgroundView: UIView!
@@ -44,6 +45,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         bottomForwardButton.isEnabled = false
         
         bottomViewHeightConstraint.constant = 0
+        bottomView.isHidden = true
         
         
         navigationController?.navigationBar.isHidden = true
