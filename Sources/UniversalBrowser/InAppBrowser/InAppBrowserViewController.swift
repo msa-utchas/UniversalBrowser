@@ -36,7 +36,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     private var _uiBackgroundColor: UIColor = .white
     private var _navigationType: NavigationType = .top
-    private var _isFlotingExitButtonElabled: Bool = false
+    private var _isFloatingButtonEnabled: Bool = false
+    
+    private var _forwardButtonImage: UIImage? = UIImage(systemName: "arrow.right.circle")
+    private var _backButtonImage: UIImage? = UIImage(systemName: "arrow.left.circle")
+    private var _reloadButtonImage: UIImage? = UIImage(systemName: "arrow.clockwise.circle")
 
 
     public override func viewDidLoad() {
@@ -137,19 +141,38 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
     }
 
-    public func setUIBackgroundColor(color: UIColor) {
-        _uiBackgroundColor = color
+    public func setUIBackgroundColor(colour: UIColor) {
+        _uiBackgroundColor = colour
     }
     public func setNavigationType(type: NavigationType) {
         _navigationType = type
     }
-    public func setFlotingExitButtonElabled(isElabled: Bool) {
-        _isFlotingExitButtonElabled = isElabled
+    public func setFloatingExitButtonEnabled(isEnabled: Bool) {
+        _isFloatingButtonEnabled = isEnabled
+    }
+    public func setForwardButtonImage(image: UIImage?) {
+        _forwardButtonImage = image
+    }
+    public func setBackButtonImage(image: UIImage?) {
+        _backButtonImage = image
+    }
+    public func setReloadButtonImage(image: UIImage?) {
+        _reloadButtonImage = image
     }
 
+
     func setupUI(){
+
         backgroundView.backgroundColor = _uiBackgroundColor
-        flottingExitButton.isHidden = !_isFlotingExitButtonElabled
+        flottingExitButton.isHidden = !_isFloatingButtonEnabled
+        
+        topForwardButton.setImage(_forwardButtonImage, for: .normal)
+        topBackButton.setImage(_backButtonImage, for: .normal)
+        topReloadButton.setImage(_reloadButtonImage, for: .normal)
+        bottomForwardButton.setImage(_forwardButtonImage, for: .normal)
+        bottomBackButton.setImage(_backButtonImage, for: .normal)
+        bottomReloadButton.setImage(_reloadButtonImage, for: .normal)
+
         switch _navigationType {
         case .top:
             bottomViewHeightConstraint.constant = 0
