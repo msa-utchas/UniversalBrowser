@@ -44,8 +44,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         topForwardButton.isEnabled = false
         bottomForwardButton.isEnabled = false
         
-        bottomViewHeightConstraint.constant = 0
-        bottomView.isHidden = true
+        //bottomViewHeightConstraint.constant = 0
+        //bottomView.isHidden = true
+
+        // change background color
+        backgroundView.backgroundColor = .red
         
         
         navigationController?.navigationBar.isHidden = true
