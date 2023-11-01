@@ -14,21 +14,17 @@ public class InAppBrowserViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setupWebView()
     }
+    
     func setupWebView() {
         
         let webView = WKWebView()
-        
-
         webView.frame = view.bounds
         
-        
         view.addSubview(webView)
-        
-
         webView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -36,8 +32,7 @@ public class InAppBrowserViewController: UIViewController {
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Load a URL (replace with your desired URL)
-        if let url = URL(string: "https://www.example.com") {
+        if let url = URL(string: "https://www.apple.com") {
             let request = URLRequest(url: url)
             webView.load(request)
         }
