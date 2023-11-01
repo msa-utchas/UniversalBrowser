@@ -21,18 +21,18 @@ public class InAppBrowserViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupWebView()
-        //hide navigationController
-        navigationController?.navigationBar.isHidden = true
-        
-        
-        backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(forwardButtonAction))
-        
-        forwardButton = UIBarButtonItem(image: UIImage(systemName: "arrow.right.circle"),style: .plain,  target: self,  action: #selector(backButtonAction))
-        
-        reloadButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise.circle"),style: .plain,  target: self,  action: #selector(reloadButtonAction))
-        
-        navigationItem.rightBarButtonItems = [reloadButton,forwardButton , backButton]
+//        setupWebView()
+//        //hide navigationController
+//        navigationController?.navigationBar.isHidden = true
+//        
+//        
+//        backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(forwardButtonAction))
+//        
+//        forwardButton = UIBarButtonItem(image: UIImage(systemName: "arrow.right.circle"),style: .plain,  target: self,  action: #selector(backButtonAction))
+//        
+//        reloadButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise.circle"),style: .plain,  target: self,  action: #selector(reloadButtonAction))
+//        
+//        navigationItem.rightBarButtonItems = [reloadButton,forwardButton , backButton]
     }
     
     func setupWebView() {
