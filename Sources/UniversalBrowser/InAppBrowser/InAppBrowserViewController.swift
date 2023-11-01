@@ -22,6 +22,8 @@ public class InAppBrowserViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupWebView()
+        //hide navigationController
+        navigationController?.navigationBar.isHidden = true
         
         
         backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(forwardButtonAction))
