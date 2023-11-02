@@ -310,15 +310,22 @@
                     <connections>
                         <outlet property="backgroundView" destination="5EZ-qb-Rvc" id="G5s-mD-Os2"/>
                         <outlet property="bottomBackButton" destination="ZFn-pX-PKM" id="KUb-CZ-ZMo"/>
+                        <outlet property="bottomBackButtonImage" destination="ogb-2N-rp6" id="sMK-po-j5p"/>
                         <outlet property="bottomForwardButton" destination="iak-4X-ua2" id="2Lv-Mc-kMC"/>
+                        <outlet property="bottomForwardButtonImage" destination="nox-1S-5f0" id="znR-jb-s9j"/>
                         <outlet property="bottomReloadButton" destination="0ud-6N-8Wm" id="rab-hi-MYF"/>
+                        <outlet property="bottomReloadButtonImage" destination="z2g-p8-CNe" id="mky-xs-UIG"/>
                         <outlet property="bottomView" destination="GzR-CY-wyk" id="bvW-fa-tD1"/>
                         <outlet property="bottomViewHeightConstraint" destination="LVe-Lr-Vce" id="jLH-BL-ciL"/>
                         <outlet property="floatingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
                         <outlet property="topBackButton" destination="WSi-8s-a9W" id="mEc-xe-DVG"/>
+                        <outlet property="topBackButtonImage" destination="sGq-in-oKB" id="Wnu-ng-skR"/>
                         <outlet property="topExitButton" destination="fGJ-QR-xty" id="SFP-5x-YQ4"/>
+                        <outlet property="topExitButtonImage" destination="Zcv-Z6-VIN" id="JBh-mm-wtg"/>
                         <outlet property="topForwardButton" destination="uVy-2t-lrh" id="35h-WR-OTJ"/>
+                        <outlet property="topForwardButtonImage" destination="BjU-Tt-aZw" id="gSS-LD-apq"/>
                         <outlet property="topReloadButton" destination="EGT-m2-drs" id="pH5-PF-kkh"/>
+                        <outlet property="topReloadButtonImage" destination="628-0N-210" id="SrU-d0-DLT"/>
                         <outlet property="webView" destination="wOb-CN-tZT" id="H0i-c3-fx4"/>
                     </connections>
                 </viewController>

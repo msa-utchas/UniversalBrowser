@@ -21,6 +21,20 @@ public enum ButtonConfiguration {
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
+    @IBOutlet weak var topExitButtonImage: UIImageView!
+    @IBOutlet weak var topBackButtonImage: UIImageView!
+    @IBOutlet weak var topForwardButtonImage: UIImageView!
+    @IBOutlet weak var topReloadButtonImage: UIImageView!
+    
+
+    @IBOutlet weak var bottomBackButtonImage: UIImageView!
+    @IBOutlet weak var bottomForwardButtonImage: UIImageView!
+    @IBOutlet weak var bottomReloadButtonImage: UIImageView!
+    
+
+    
+    
+    
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
@@ -67,10 +81,6 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         topForwardButton.isEnabled = false
         bottomForwardButton.isEnabled = false
         
-        //bottomViewHeightConstraint.constant = 0
-        //bottomView.isHidden = true
-
-        // change background color
         backgroundView.backgroundColor = .red
         
         
@@ -201,12 +211,15 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         floatingExitButton.layer.masksToBounds = true
         floatingExitButton.backgroundColor = .red
         
-        topForwardButton.setImage(_forwardButtonImage, for: .normal)
-        topBackButton.setImage(_backButtonImage, for: .normal)
-        topReloadButton.setImage(_reloadButtonImage, for: .normal)
-        bottomForwardButton.setImage(_forwardButtonImage, for: .normal)
-        bottomBackButton.setImage(_backButtonImage, for: .normal)
-        bottomReloadButton.setImage(_reloadButtonImage, for: .normal)
+        topForwardButtonImage.image = _forwardButtonImage
+        bottomForwardButtonImage.image = _forwardButtonImage
+        
+        topBackButtonImage.image = _backButtonImage
+        bottomBackButtonImage.image = _backButtonImage
+        
+        topReloadButtonImage.image = _reloadButtonImage
+        bottomReloadButtonImage.image = _reloadButtonImage
+        
 
         switch _buttonConfiguration {
         case .allButtons:
