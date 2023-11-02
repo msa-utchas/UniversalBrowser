@@ -48,11 +48,15 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _backButtonImage: UIImage? = UIImage(systemName: "arrow.left.circle")
     private var _reloadButtonImage: UIImage? = UIImage(systemName: "arrow.clockwise.circle")
     private var _buttonConfiguration: ButtonConfiguration = .allButtons
+    private var _url: String = "apple.com"
+    private var _floatingExitButtonBackgroundColor: UIColor = .green
+    private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
+
+
 
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -71,10 +75,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
         
         navigationController?.navigationBar.isHidden = true
-        if let url = URL(string: "https://www.apple.com") {
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
+        setupUI()
+        
     }
     
     func forwardButtonAction() {
@@ -170,7 +172,15 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     public func setButtonConfiguration(configuration: ButtonConfiguration) {
         _buttonConfiguration = configuration
     }
-    
+    public func setUrl(url: String) {
+        _url = url
+    }
+    public func setFloatingExitButtonBackgroundColor(colour: UIColor) {
+        _floatingExitButtonBackgroundColor = colour
+    }
+    public func setFloatingExitButtonImage(image: UIImage?) {
+        _floatingExitButtonImage = resizeImage(image: image)
+    }
     func resizeImage(image: UIImage?) -> UIImage? {
   
         let newSize = CGSize(width: 30, height: 30)
@@ -180,6 +190,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         UIGraphicsEndImageContext()
         return newImage
     }
+
 
     func setupUI(){
 
@@ -218,6 +229,15 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             topBackButton.isHidden = true
             topReloadButton.isHidden = true
         }
+        
+        floatingExitButton.backgroundColor = _floatingExitButtonBackgroundColor
+        floatingExitButton.setImage(_floatingExitButtonImage, for: .normal)
+
+        if let url = URL(string: _url){
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
     }
+    
 }
 
