@@ -32,10 +32,6 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     @IBOutlet weak var bottomReloadButtonImage: UIImageView!
     
 
-    
-    
-    
-    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var backgroundView: UIView!
@@ -142,21 +138,37 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     }
 
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if webView.canGoBack{
-            topBackButton.isEnabled = true
-            bottomBackButton.isEnabled = true
-        }
-        else{
-            topBackButton.isEnabled = false
-            bottomBackButton.isEnabled = false
-        }
-        if webView.canGoForward{
-            topForwardButton.isEnabled = true
-            bottomForwardButton.isEnabled = true
-        }
-        else{
-            topForwardButton.isEnabled = false
-            bottomForwardButton.isEnabled = false
+        
+        if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
+            
+            if webView.canGoBack{
+                topBackButton.isEnabled = true
+                bottomBackButton.isEnabled = true
+                
+                topBackButtonImage.isHidden = false
+                bottomBackButtonImage.isHidden = false
+            }
+            else{
+                topBackButton.isEnabled = false
+                bottomBackButton.isEnabled = false
+                
+                topBackButtonImage.isHidden = true
+                bottomBackButtonImage.isHidden = true
+            }
+            if webView.canGoForward{
+                topForwardButton.isEnabled = true
+                bottomForwardButton.isEnabled = true
+                
+                topForwardButtonImage.isHidden = false
+                bottomForwardButtonImage.isHidden = false
+            }
+            else{
+                topForwardButton.isEnabled = false
+                bottomForwardButton.isEnabled = false
+                
+                topForwardButtonImage.isHidden = true
+                bottomForwardButtonImage.isHidden = true
+            }
         }
     }
 
@@ -220,6 +232,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         topReloadButtonImage.image = _reloadButtonImage
         bottomReloadButtonImage.image = _reloadButtonImage
         
+        topForwardButtonImage.isHidden = true
+        topBackButtonImage.isHidden = true
+        bottomForwardButtonImage.isHidden = true
+        bottomForwardButtonImage.isHidden = true
+        
 
         switch _buttonConfiguration {
         case .allButtons:
@@ -227,11 +244,19 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         case .backAndForward:
             topReloadButton.isHidden = true
             bottomReloadButton.isHidden = true
+            topReloadButtonImage.isHidden = true
+            bottomReloadButtonImage.isHidden = true
+            
         case .reload:
             topForwardButton.isHidden = true
             topBackButton.isHidden = true
             bottomForwardButton.isHidden = true
             bottomBackButton.isHidden = true
+            
+            topForwardButtonImage.isHidden = true
+            topBackButtonImage.isHidden = true
+            bottomForwardButtonImage.isHidden = true
+            bottomForwardButtonImage.isHidden = true
         }
         switch _navigationType {
         case .top:

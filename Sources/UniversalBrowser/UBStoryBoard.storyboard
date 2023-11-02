@@ -179,7 +179,7 @@
                                     <constraint firstAttribute="height" constant="35" id="xuR-XP-8K9"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="back">
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
