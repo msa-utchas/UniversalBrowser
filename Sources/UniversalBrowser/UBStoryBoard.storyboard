@@ -97,7 +97,7 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-MM-SL7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-MM-SL7">
                                 <rect key="frame" x="136.66666666666666" y="727" width="119.99999999999997" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="GhM-dM-nC5"/>
