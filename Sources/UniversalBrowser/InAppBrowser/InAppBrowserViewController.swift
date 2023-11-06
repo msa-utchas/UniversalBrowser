@@ -101,7 +101,12 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         webView.reload()
     }
     func exitButtonAction() {
-        navigationController?.popViewController(animated: true)
+        if let nav = navigationController{
+            nav.popViewController(animated: true)
+        }
+        else{
+            self.dismiss(animated: true)
+        }
     }
     
     @IBAction func topExitButtonTapped(_ sender: UIButton) {
