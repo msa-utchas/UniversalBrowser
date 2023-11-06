@@ -184,6 +184,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
     }
 
+
+    
     public func setUIBackgroundColor(colour: UIColor) {
         _uiBackgroundColor = colour
     }
@@ -225,7 +227,24 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         return newImage
     }
 
-
+    @IBAction func shareLink(_ sender: UIButton) {
+        guard let linkURL = URL(string: "https://www.example.com") else {
+                return
+            }
+            
+         
+            let activityViewController = UIActivityViewController(activityItems: [linkURL], applicationActivities: nil)
+            
+            if let popoverPresentationController = activityViewController.popoverPresentationController {
+                popoverPresentationController.sourceView = sender
+            }
+            
+        
+            present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    
     func setupUI(){
 
         backgroundView.backgroundColor = _uiBackgroundColor

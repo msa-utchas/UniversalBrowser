@@ -53,7 +53,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="daa-uU-oRf">
-                                                <rect key="frame" x="159" y="0.0" width="222" height="35"/>
+                                                <rect key="frame" x="105" y="0.0" width="276" height="35"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XoO-wO-pQ9">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
@@ -181,6 +181,40 @@
                                                             <constraint firstItem="5So-Mw-IXa" firstAttribute="trailing" secondItem="Qsg-lD-sJS" secondAttribute="trailing" id="RwM-rz-xfo"/>
                                                             <constraint firstItem="5So-Mw-IXa" firstAttribute="top" secondItem="Qsg-lD-sJS" secondAttribute="top" id="kDU-li-VTd"/>
                                                             <constraint firstItem="Qsg-lD-sJS" firstAttribute="top" secondItem="UVB-Na-ClE" secondAttribute="top" id="vP0-qz-mfp"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Az5-kQ-Wbq">
+                                                        <rect key="frame" x="226" y="0.0" width="50" height="35"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKG-Jm-qzv">
+                                                                <rect key="frame" x="0.0" y="0.0" width="45" height="35"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="45" id="4uz-70-MSF"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                                <connections>
+                                                                    <action selector="openInBrowser:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3dv-ng-bkO"/>
+                                                                    <action selector="shareLink:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CQI-LI-msq"/>
+                                                                    <action selector="topForwardButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aoe-X5-FSX"/>
+                                                                </connections>
+                                                            </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="okT-Jy-hY3">
+                                                                <rect key="frame" x="0.0" y="1" width="45" height="33.666666666666671"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="aKG-Jm-qzv" secondAttribute="trailing" constant="5" id="3Wp-s7-wbY"/>
+                                                            <constraint firstItem="okT-Jy-hY3" firstAttribute="top" secondItem="aKG-Jm-qzv" secondAttribute="top" id="Avj-Eg-EbQ"/>
+                                                            <constraint firstItem="okT-Jy-hY3" firstAttribute="bottom" secondItem="aKG-Jm-qzv" secondAttribute="bottom" id="ITw-ra-BXz"/>
+                                                            <constraint firstItem="aKG-Jm-qzv" firstAttribute="top" secondItem="Az5-kQ-Wbq" secondAttribute="top" id="M0f-E5-8bk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="aKG-Jm-qzv" secondAttribute="bottom" id="Q2t-i7-bwg"/>
+                                                            <constraint firstAttribute="width" constant="50" id="XRz-Nb-sk3"/>
+                                                            <constraint firstItem="aKG-Jm-qzv" firstAttribute="leading" secondItem="Az5-kQ-Wbq" secondAttribute="leading" id="izf-68-djw"/>
+                                                            <constraint firstItem="okT-Jy-hY3" firstAttribute="trailing" secondItem="aKG-Jm-qzv" secondAttribute="trailing" id="pn3-Vv-XDb"/>
+                                                            <constraint firstItem="okT-Jy-hY3" firstAttribute="leading" secondItem="aKG-Jm-qzv" secondAttribute="leading" id="wvb-fR-DDA"/>
+                                                            <constraint firstAttribute="height" constant="35" id="xDS-xw-P77"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -372,6 +406,7 @@
         <image name="arrow.backward.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.right.circle" catalog="system" width="128" height="123"/>
+        <image name="arrowshape.turn.up.right.circle.fill" catalog="system" width="128" height="123"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
