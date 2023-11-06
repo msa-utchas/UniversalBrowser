@@ -137,7 +137,19 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         exitButtonAction()
     }
 
+    @IBAction func openInBrowser(_ sender: Any) {
+        if let url = URL(string: _url) {
+            UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
+                if !success {
+                    print("URL failed to open")
+                }
+            }
+        }
+    }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let url = webView.url{
+            _url = url.absoluteString
+        }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
             
@@ -172,6 +184,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
     }
 
+
+    
     public func setUIBackgroundColor(colour: UIColor) {
         _uiBackgroundColor = colour
     }
@@ -213,7 +227,22 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         return newImage
     }
 
-
+    @IBAction func shareLink(_ sender: UIButton) {
+        guard let linkURL = URL(string: _url) else {
+                return
+            }
+        
+            let activityViewController = UIActivityViewController(activityItems: [linkURL], applicationActivities: nil)
+            
+            if let popoverPresentationController = activityViewController.popoverPresentationController {
+                popoverPresentationController.sourceView = sender
+            }
+        
+            present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    
     func setupUI(){
 
         backgroundView.backgroundColor = _uiBackgroundColor
