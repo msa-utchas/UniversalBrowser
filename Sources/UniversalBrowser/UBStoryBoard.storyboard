@@ -194,9 +194,7 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                                                 <connections>
-                                                                    <action selector="openInBrowser:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3dv-ng-bkO"/>
-                                                                    <action selector="shareLink:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CQI-LI-msq"/>
-                                                                    <action selector="topForwardButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aoe-X5-FSX"/>
+                                                                    <action selector="shareLink:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fkb-Cq-CDc"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="okT-Jy-hY3">
