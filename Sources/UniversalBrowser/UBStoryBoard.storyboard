@@ -162,7 +162,6 @@
                                                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                                                                 <connections>
                                                                     <action selector="openInBrowser:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vep-if-ujD"/>
-                                                                    <action selector="topForwardButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6PJ-aG-6EZ"/>
                                                                 </connections>
                                                             </button>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5So-Mw-IXa">
