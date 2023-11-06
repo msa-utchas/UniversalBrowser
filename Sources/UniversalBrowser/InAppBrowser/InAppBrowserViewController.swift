@@ -137,7 +137,19 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         exitButtonAction()
     }
 
+    @IBAction func openInBrowser(_ sender: Any) {
+        if let url = URL(string: _url) {
+            UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
+                if !success {
+                    print("URL failed to open")
+                }
+            }
+        }
+    }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let url = webView.url{
+            _url = url.absoluteString
+        }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
             
