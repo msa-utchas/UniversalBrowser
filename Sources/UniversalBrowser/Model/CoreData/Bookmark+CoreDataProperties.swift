@@ -23,7 +23,7 @@ extension Bookmark {
         return request
     }
 
-    @NSManaged public var link: String?
+    @NSManaged public var url: String?
     @NSManaged public var title: String?
     @NSManaged public var date: Date?
 

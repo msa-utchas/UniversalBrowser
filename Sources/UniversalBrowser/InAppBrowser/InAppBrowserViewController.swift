@@ -84,10 +84,10 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         navigationController?.navigationBar.isHidden = true
         setupUI()
         
-        let allBookmark = CoredataManager.shared.fetchBookmark()
+        let allBookmark = CoredataManager.shared.getAllBookmark()
         for bkmrk in allBookmark {
-            if let link = bkmrk.link, let title = bkmrk.title {
-                print("bookmark url: \(link), \n        title: \(title)")
+            if let url = bkmrk.url, let title = bkmrk.title {
+                print("bookmark url: \(url), \n        title: \(title)")
             }
         }
     }
@@ -162,7 +162,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         if let url = webView.url, let title = webView.title{
             _url = url.absoluteString
             _title = title
-            CoredataManager.shared.insertBookmark(link: _url, title: _title)
+            CoredataManager.shared.insertBookmark(url: _url, title: _title)
         }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){

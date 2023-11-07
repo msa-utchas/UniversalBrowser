@@ -10,46 +10,47 @@
 import Foundation
 import CoreData
 
+/*
+ --- make unique attribute, and should have a notification if try to insert duplicate item
+*/
+
 public class CoredataManager {
     
     static let shared = CoredataManager()
-//    let context = appDelegate.persistentContainer.viewContext
     var context:NSManagedObjectContext?
     
     init() {
         self.context = persistentContainer?.viewContext
+    }
+
+    public func insertBookmark(url:String, title: String) {
+        
+        if isLinkAlreadyExist(url: url){
+            return
+        }
+        
+        let newBookmark = NSEntityDescription.insertNewObject(forEntityName: "Bookmark", into: context!) as! Bookmark
+        newBookmark.url = url
+        newBookmark.title = title
+        newBookmark.date = Date()
+        
+        saveContext(errorText: "can't insert")
+    }
+    
+    public func getAllBookmark() -> [Bookmark] {
+        
+        return try! context!.fetch(Bookmark.fetchRequest())
+    }
+    
+    public func getAllBookmarkByDateSorted() -> [Bookmark] {
+        
+        return try! context!.fetch(Bookmark.fetchRequestDate())
     }
     
     public func deleteBookmark(bookmark: Bookmark) {
         
         context?.delete(bookmark)
         saveContext(errorText: "can't delete")
-    }
-    
-
-    public func fetchBookmark() -> [Bookmark] {
-        
-        return try! context!.fetch(Bookmark.fetchRequest())
-    }
-    
-    public func fetchBookmarkByDate() -> [Bookmark] {
-        
-        return try! context!.fetch(Bookmark.fetchRequestDate())
-    }
-
-    public func insertBookmark(link:String, title: String) {
-        
-        if isLinkAlreadyExist(link: link){
-            return
-        }
-        
-        let newBookmark = NSEntityDescription.insertNewObject(forEntityName: "Bookmark", into: context!) as! Bookmark
-        
-        newBookmark.link = link
-        newBookmark.title = title
-        newBookmark.date = Date()
-        
-        saveContext(errorText: "can't insert")
     }
     
 
@@ -75,10 +76,10 @@ public class CoredataManager {
         }
     }
     
-    private func isLinkAlreadyExist(link:String)->Bool{
-        let allBookmark = fetchBookmark()
+    private func isLinkAlreadyExist(url:String)->Bool{
+        let allBookmark = getAllBookmark()
         for bkmrk in allBookmark {
-            if bkmrk.link == link {
+            if bkmrk.url == url {
                 return true
             }
         }
