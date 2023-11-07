@@ -55,7 +55,7 @@ public class CoredataManager {
 
     
     lazy private var persistentContainer: PersistentContainer? = {
-        guard let modelURL = Bundle.module.url(forResource:"UniversalBrowser", withExtension: "xcdatamodeld") else { return  nil }  // momd
+        guard let modelURL = Bundle.module.url(forResource:"UniversalBrowser", withExtension: "momd") else { return  nil }  // momd, xcdatamodeld
         guard let model = NSManagedObjectModel(contentsOf: modelURL) else { return nil }
         let container = PersistentContainer(name:"UniversalBrowser",managedObjectModel:model)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
