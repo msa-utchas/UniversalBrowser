@@ -59,6 +59,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _reloadButtonImage: UIImage? = UIImage(systemName: "arrow.clockwise.circle")
     private var _buttonConfiguration: ButtonConfiguration = .allButtons
     private var _url: String = "apple.com"
+    private var _title: String = "apple"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
     private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
 
@@ -83,6 +84,12 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         navigationController?.navigationBar.isHidden = true
         setupUI()
         
+        let allBookmark = CoredataManager.shared.fetchBookmark()
+        for bkmrk in allBookmark {
+            if let link = bkmrk.link, let title = bkmrk.title {
+                print("bookmark url: \(link), \n        title: \(title)")
+            }
+        }
     }
     
     func forwardButtonAction() {
@@ -152,8 +159,10 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
     }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let url = webView.url{
+        if let url = webView.url, let title = webView.title{
             _url = url.absoluteString
+            _title = title
+            CoredataManager.shared.insertBookmark(link: _url, title: _title)
         }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
