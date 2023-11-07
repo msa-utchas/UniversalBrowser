@@ -23,6 +23,7 @@ public class CoredataManager {
         self.context = persistentContainer?.viewContext
     }
 
+    // below crud for bookmark
     public func insertBookmark(url:String, title: String) {
         
         if isLinkAlreadyExist(url: url){
@@ -54,11 +55,37 @@ public class CoredataManager {
     }
     
 
+    // below crud for history
+    public func insertHistory(url:String, title: String) {
+        
+        let newHistory = NSEntityDescription.insertNewObject(forEntityName: "History", into: context!) as! History
+        newHistory.url = url
+        newHistory.title = title
+        newHistory.date = Date()
+        saveContext(errorText: "can't insert")
+    }
     
-    lazy private var persistentContainer: PersistentContainer? = {
+    public func getAllHistory() -> [History] {
+        
+        return try! context!.fetch(History.fetchRequest())
+    }
+    
+    public func getAllHistoryByDateSorted() -> [History] {
+        
+        return try! context!.fetch(History.fetchRequestDate())
+    }
+    
+    public func deleteHistory(history: History) {
+        
+        context?.delete(history)
+        saveContext(errorText: "can't delete")
+    }
+    
+    // below is persistent container and other context setup
+    lazy private var persistentContainer: NSPersistentContainer? = {
         guard let modelURL = Bundle.module.url(forResource:"UniversalBrowser", withExtension: "momd") else { return  nil }  // momd, xcdatamodeld
         guard let model = NSManagedObjectModel(contentsOf: modelURL) else { return nil }
-        let container = PersistentContainer(name:"UniversalBrowser",managedObjectModel:model)
+        let container = NSPersistentContainer(name:"UniversalBrowser",managedObjectModel:model)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")

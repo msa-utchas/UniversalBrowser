@@ -84,10 +84,18 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         navigationController?.navigationBar.isHidden = true
         setupUI()
         
-        let allBookmark = CoredataManager.shared.getAllBookmark()
-        for bkmrk in allBookmark {
-            if let url = bkmrk.url, let title = bkmrk.title {
+        let allHistory = CoredataManager.shared.getAllHistory()
+        for history in allHistory {
+            if let url = history.url, let title = history.title {
                 print("bookmark url: \(url), \n        title: \(title)")
+            }
+        }
+        
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
+                self.present(vc, animated: true)
             }
         }
     }
@@ -162,7 +170,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         if let url = webView.url, let title = webView.title{
             _url = url.absoluteString
             _title = title
-            CoredataManager.shared.insertBookmark(url: _url, title: _title)
+            CoredataManager.shared.insertHistory(url: _url, title: _title)
         }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){

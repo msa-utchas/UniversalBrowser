@@ -16,6 +16,13 @@ extension History {
         return NSFetchRequest<History>(entityName: "History")
     }
 
+    @nonobjc public class func fetchRequestDate() -> NSFetchRequest<History> {
+        let request = NSFetchRequest<History>(entityName: "History")
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sort]
+        return request
+    }
+
     @NSManaged public var url: String?
     @NSManaged public var title: String?
     @NSManaged public var date: Date?
