@@ -31,7 +31,7 @@ class HistoryVC: UIViewController {
             historyTV.delegate = self
             historyTV.dataSource = self
             historyTV.backgroundColor = .clear
-            historyTV.register(UINib(nibName: "HistoryTVCell", bundle: nil), forCellReuseIdentifier: "HistoryTVCell")
+            historyTV.register(UINib(nibName: "HistoryTVCell", bundle: Bundle.module), forCellReuseIdentifier: "HistoryTVCell")
         }
     }
     

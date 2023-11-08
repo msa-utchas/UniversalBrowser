@@ -31,7 +31,7 @@ class BookmarkVC: UIViewController {
             bookmarkTV.delegate = self
             bookmarkTV.dataSource = self
             bookmarkTV.backgroundColor = .clear
-            bookmarkTV.register(UINib(nibName: "BookmarkTVCell", bundle: nil), forCellReuseIdentifier: "BookmarkTVCell")
+            bookmarkTV.register(UINib(nibName: "BookmarkTVCell", bundle: Bundle.module), forCellReuseIdentifier: "BookmarkTVCell")
         }
     }
     
