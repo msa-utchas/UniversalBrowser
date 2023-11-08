@@ -86,6 +86,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bookmarkTV" destination="Ief-4B-3IX" id="aT7-Bl-xMP"/>
                         <outlet property="btnClearData" destination="Ozd-WC-92C" id="EX0-up-NSI"/>
                         <outlet property="btnDone" destination="PXy-iA-IzU" id="KND-NS-IMZ"/>
                         <outlet property="btnEdit" destination="lNh-nt-Get" id="4CR-dm-vg3"/>
