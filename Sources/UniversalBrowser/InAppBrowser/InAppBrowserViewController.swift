@@ -69,6 +69,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     private var _buttonConfiguration: ButtonConfiguration = .allButtons
     private var _url: String = "apple.com"
+    private var _title: String = "apple"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
     private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
     
@@ -99,6 +100,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         navigationController?.navigationBar.isHidden = true
         setupUI()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
+                self.present(vc, animated: true)
+            }
+        }
     }
     
     func forwardButtonAction() {
@@ -117,7 +123,12 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         webView.reload()
     }
     func exitButtonAction() {
-        navigationController?.popViewController(animated: true)
+        if let nav = navigationController{
+            nav.popViewController(animated: true)
+        }
+        else{
+            self.dismiss(animated: true)
+        }
     }
     
     @IBAction func topExitButtonTapped(_ sender: UIButton) {
@@ -166,6 +177,13 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
     }
     @IBAction func openInBrowser(_ sender: Any) {
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            if let vc = UIStoryboard(name: "Bookmark", bundle: Bundle.module).instantiateViewController(withIdentifier: "BookmarkVC") as? BookmarkVC{
+                self.present(vc, animated: true)
+            }
+        }
+        return
+        
         if let url = URL(string: _url) {
             UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
                 if !success {
@@ -178,8 +196,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         closeOptionView()
     }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let url = webView.url{
+        if let url = webView.url, let title = webView.title{
             _url = url.absoluteString
+            _title = title
+            CoredataManager.shared.insertHistory(url: _url, title: _title)
+            CoredataManager.shared.insertBookmark(url: _url, title: _title)
         }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
@@ -266,6 +287,14 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     }
 
     @IBAction func shareLink(_ sender: UIButton) {
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
+                self.present(vc, animated: true)
+            }
+        }
+        return
+        
+        
         guard let linkURL = URL(string: _url) else {
                 return
             }
