@@ -218,12 +218,13 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     public func setFloatingExitButtonEnabled(isEnabled: Bool) {
         _isFloatingButtonEnabled = isEnabled
     }
-    public func setForwardButtonImage(image: UIImage?) {
-        _forwardButtonImage = image
+    public func setForwardButtonImage(enableState: UIImage?, disableState: UIImage?) {
+        _forwardButtonImage = enableState
+        _forwardButtonImageDisabled = disableState
     }
-    public func setBackButtonImage(image: UIImage?) {
-
-        _backButtonImage = resizeImage(image: image)
+    public func setBackButtonImage(enableState: UIImage?, disableState: UIImage?) {
+        _backButtonImage = enableState
+        _backButtonImageDisabled = disableState
     }
     public func setReloadButtonImage(image: UIImage?) {
         _reloadButtonImage = image
