@@ -46,13 +46,29 @@ class BookmarkVC: UIViewController {
 
 extension BookmarkVC{
     @objc private func btnDoneAction(){
-        
+        self.dismiss(animated: true)
     }
     @objc private func btnClearDataAction(){
-        
+        let myalert = UIAlertController(title: "Delete entire Bookmark?", message: nil, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action) in
+            CoredataManager.shared.deleteAllBookmark()
+            self.allBookmark = CoredataManager.shared.getAllBookmark()
+            self.bookmarkTV.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        myalert.addAction(deleteAction)
+        myalert.addAction(cancelAction)
+        self.present(myalert,animated: true)
     }
     @objc private func btnEditAction(){
-        
+        if bookmarkTV.isEditing {
+            bookmarkTV.isEditing = false
+            btnEdit.setTitle("Edit", for: .normal)
+        }
+        else{
+            bookmarkTV.isEditing = true
+            btnEdit.setTitle("Done", for: .normal)
+        }
     }
 }
 
@@ -72,5 +88,16 @@ extension BookmarkVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            CoredataManager.shared.deleteBookmark(bookmark: allBookmark[indexPath.row])
+            allBookmark.remove(at: indexPath.row)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 }

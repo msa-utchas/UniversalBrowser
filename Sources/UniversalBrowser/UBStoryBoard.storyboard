@@ -413,12 +413,20 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Done"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5j3-P5-46M">
+                                        <rect key="frame" x="165" y="10" width="63" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="42q-gg-hCR"/>
                                     <constraint firstAttribute="trailing" secondItem="9gk-q7-gso" secondAttribute="trailing" constant="20" id="AAX-Bi-ogd"/>
+                                    <constraint firstItem="5j3-P5-46M" firstAttribute="centerX" secondItem="H0b-CA-ICC" secondAttribute="centerX" id="B4w-BA-Dez"/>
                                     <constraint firstItem="9gk-q7-gso" firstAttribute="centerY" secondItem="H0b-CA-ICC" secondAttribute="centerY" id="EAi-m3-OCk"/>
+                                    <constraint firstItem="5j3-P5-46M" firstAttribute="centerY" secondItem="H0b-CA-ICC" secondAttribute="centerY" id="gim-Os-t78"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7ME-29-A2N">
@@ -492,10 +500,18 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Done"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmarks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENQ-3D-mZm">
+                                        <rect key="frame" x="147.33333333333334" y="10" width="98.333333333333343" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="0HC-Iq-TIL" firstAttribute="centerY" secondItem="Rwv-RT-MGJ" secondAttribute="centerY" id="RzK-eq-6MG"/>
+                                    <constraint firstItem="ENQ-3D-mZm" firstAttribute="centerX" secondItem="Rwv-RT-MGJ" secondAttribute="centerX" id="b22-hv-Tft"/>
+                                    <constraint firstItem="ENQ-3D-mZm" firstAttribute="centerY" secondItem="Rwv-RT-MGJ" secondAttribute="centerY" id="bph-QG-p8B"/>
                                     <constraint firstAttribute="trailing" secondItem="0HC-Iq-TIL" secondAttribute="trailing" constant="20" id="e1e-7x-hLh"/>
                                     <constraint firstAttribute="height" constant="44" id="mCx-vc-Gon"/>
                                 </constraints>

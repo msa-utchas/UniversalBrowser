@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 /*
- --- make unique attribute, and should have a notification if try to insert duplicate item
+ --- make unique attribute of Bookmark, and should have a notification if try to insert duplicate item
 */
 
 public class CoredataManager {
@@ -53,6 +53,15 @@ public class CoredataManager {
         context?.delete(bookmark)
         saveContext(errorText: "can't delete")
     }
+
+    public func deleteAllBookmark() {
+        
+        let allBookmark = getAllBookmark()
+        for bookmark in allBookmark {
+            context?.delete(bookmark)
+        }
+        saveContext(errorText: "can't delete")
+    }
     
 
     // below crud for history
@@ -78,6 +87,15 @@ public class CoredataManager {
     public func deleteHistory(history: History) {
         
         context?.delete(history)
+        saveContext(errorText: "can't delete")
+    }
+
+    public func deleteAllHistory() {
+        
+        let allHistory = getAllHistory()
+        for history in allHistory {
+            context?.delete(history)
+        }
         saveContext(errorText: "can't delete")
     }
     
