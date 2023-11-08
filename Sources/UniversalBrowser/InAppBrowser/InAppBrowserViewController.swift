@@ -21,6 +21,7 @@ public enum ButtonConfiguration {
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
+    @IBOutlet weak var customOptionView: OptionsView!
     @IBOutlet weak var topExitButtonImage: UIImageView!
     @IBOutlet weak var topBackButtonImage: UIImageView!
     @IBOutlet weak var topForwardButtonImage: UIImageView!
@@ -61,12 +62,18 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _url: String = "apple.com"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
     private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
+    
+    private var _customOptionsToggle: Bool = true
 
 
 
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+       
+        
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -137,6 +144,10 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         exitButtonAction()
     }
 
+    @IBAction func toggleOptions(_ sender: Any) {
+        _customOptionsToggle.toggle()
+        customOptionView.isHidden(_customOptionsToggle)
+    }
     @IBAction func openInBrowser(_ sender: Any) {
         if let url = URL(string: _url) {
             UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
@@ -304,7 +315,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             let request = URLRequest(url: url)
             webView.load(request)
         }
+        
     }
+    
     
 }
 
