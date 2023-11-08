@@ -20,7 +20,10 @@ public enum ButtonConfiguration {
 
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
+
+    @IBOutlet weak var optionViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var closeCustomOptionsView: UIView!
     @IBOutlet weak var customOptionView: OptionsView!
     @IBOutlet weak var topExitButtonImage: UIImageView!
     @IBOutlet weak var topBackButtonImage: UIImageView!
@@ -69,7 +72,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _floatingExitButtonBackgroundColor: UIColor = .green
     private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
     
-    private var _customOptionsToggle: Bool = true
+    private var _customOptionsToggle: Bool = false
 
 
 
@@ -151,8 +154,16 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     }
 
     @IBAction func toggleOptions(_ sender: Any) {
-        _customOptionsToggle.toggle()
-        customOptionView.isHidden(_customOptionsToggle)
+
+        if(_customOptionsToggle){
+            
+            openOptionView()
+            
+        }
+        else{
+            closeOptionView()
+        }
+        
     }
     @IBAction func openInBrowser(_ sender: Any) {
         if let url = URL(string: _url) {
@@ -162,6 +173,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
                 }
             }
         }
+    }
+    @IBAction func viewTapAction(_ sender: Any) {
+        closeOptionView()
     }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let url = webView.url{
@@ -266,9 +280,26 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
     }
     
+    func openOptionView() {
+        closeCustomOptionsView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.optionViewBottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+        _customOptionsToggle.toggle()
+    }
+
+    func closeOptionView() {
+        closeCustomOptionsView.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.optionViewBottomConstraint.constant = -350
+            self.view.layoutIfNeeded()
+        }
+        _customOptionsToggle.toggle()
+    }
     
     func setupUI(){
-
+        optionViewBottomConstraint.constant = -350
         backgroundView.backgroundColor = _uiBackgroundColor
         floatingExitButton.isHidden = !_isFloatingButtonEnabled
 
@@ -330,6 +361,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
         
     }
+    
     
     
 }

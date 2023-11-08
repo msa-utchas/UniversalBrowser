@@ -26,7 +26,6 @@ class OptionsView: UIView {
         let xibView = Bundle.module.loadNibNamed("OptionView", owner: self)![0] as! UIView
         xibView.frame = self.bounds
         addSubview(xibView)
-        isHidden(true)
     
     }
     

@@ -372,6 +372,14 @@
                                     <constraint firstAttribute="height" constant="350" id="WA3-bF-02H"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcb-Pf-atq">
+                                <rect key="frame" x="0.0" y="103" width="393" height="399"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cLV-8O-9fb" appends="YES" id="0Cu-gh-FPN"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -382,16 +390,20 @@
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GUb-Je-fAq"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="HC3-W6-64J"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="HcK-un-MT5"/>
+                            <constraint firstItem="Pcb-Pf-atq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Lwg-Qa-qjH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wOb-CN-tZT" secondAttribute="trailing" id="QWe-hQ-LUq"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="RQS-tL-SsD"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Roj-cd-PJC"/>
                             <constraint firstAttribute="bottom" secondItem="GzR-CY-wyk" secondAttribute="bottom" id="Sx5-rK-z0g"/>
+                            <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="top" secondItem="Pcb-Pf-atq" secondAttribute="bottom" id="XwN-Fo-V9n"/>
                             <constraint firstAttribute="bottom" secondItem="7Fe-ZI-Qbw" secondAttribute="bottom" id="ZzY-v2-iap"/>
                             <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aaK-tC-qI7"/>
                             <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="aca-gg-V5z"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fOI-O3-Yoz"/>
+                            <constraint firstItem="Pcb-Pf-atq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="krs-4v-QCf"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mJX-t5-u6B"/>
                             <constraint firstItem="wOb-CN-tZT" firstAttribute="top" secondItem="xqN-Jy-m7Y" secondAttribute="bottom" id="pw2-Ma-dts"/>
+                            <constraint firstItem="Pcb-Pf-atq" firstAttribute="top" secondItem="xqN-Jy-m7Y" secondAttribute="bottom" id="rek-Q2-ED4"/>
                             <constraint firstItem="HJr-MM-SL7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ts4-Hd-uKO"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="w5E-CF-9BK"/>
                         </constraints>
@@ -406,8 +418,10 @@
                         <outlet property="bottomReloadButtonImage" destination="z2g-p8-CNe" id="mky-xs-UIG"/>
                         <outlet property="bottomView" destination="GzR-CY-wyk" id="bvW-fa-tD1"/>
                         <outlet property="bottomViewHeightConstraint" destination="LVe-Lr-Vce" id="jLH-BL-ciL"/>
+                        <outlet property="closeCustomOptionsView" destination="Pcb-Pf-atq" id="ymY-cB-b68"/>
                         <outlet property="customOptionView" destination="7Fe-ZI-Qbw" id="KrI-GA-ZTu"/>
                         <outlet property="floatingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
+                        <outlet property="optionViewBottomConstraint" destination="ZzY-v2-iap" id="c7W-ND-Ruj"/>
                         <outlet property="topBackButton" destination="WSi-8s-a9W" id="mEc-xe-DVG"/>
                         <outlet property="topBackButtonImage" destination="sGq-in-oKB" id="Wnu-ng-skR"/>
                         <outlet property="topExitButton" destination="fGJ-QR-xty" id="SFP-5x-YQ4"/>
@@ -448,6 +462,11 @@
                         <constraint firstAttribute="trailing" secondItem="RYv-Ee-Bdf" secondAttribute="trailing" constant="8" id="sE6-1E-hkE"/>
                     </constraints>
                 </view>
+                <tapGestureRecognizer id="cLV-8O-9fb">
+                    <connections>
+                        <action selector="viewTapAction:" destination="Y6W-OH-hqX" id="Ssu-Wz-Ly0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="119.84732824427481" y="3.5211267605633805"/>
         </scene>
