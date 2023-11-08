@@ -209,7 +209,7 @@
                                                                 </connections>
                                                             </button>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i1W-OE-ccB">
-                                                                <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666657"/>
+                                                                <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -386,13 +386,13 @@
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="RQS-tL-SsD"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Roj-cd-PJC"/>
                             <constraint firstAttribute="bottom" secondItem="GzR-CY-wyk" secondAttribute="bottom" id="Sx5-rK-z0g"/>
-                            <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="UDN-rT-rq7"/>
                             <constraint firstAttribute="bottom" secondItem="7Fe-ZI-Qbw" secondAttribute="bottom" id="ZzY-v2-iap"/>
+                            <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aaK-tC-qI7"/>
+                            <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="aca-gg-V5z"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fOI-O3-Yoz"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mJX-t5-u6B"/>
                             <constraint firstItem="wOb-CN-tZT" firstAttribute="top" secondItem="xqN-Jy-m7Y" secondAttribute="bottom" id="pw2-Ma-dts"/>
                             <constraint firstItem="HJr-MM-SL7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ts4-Hd-uKO"/>
-                            <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vMx-Pw-qit"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="w5E-CF-9BK"/>
                         </constraints>
                     </view>

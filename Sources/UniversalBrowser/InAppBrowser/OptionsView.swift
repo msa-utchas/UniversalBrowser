@@ -9,6 +9,7 @@ import UIKit
 
 class OptionsView: UIView {
     
+    @IBOutlet weak var backView: UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         viewInit()
@@ -26,6 +27,7 @@ class OptionsView: UIView {
         xibView.frame = self.bounds
         addSubview(xibView)
         isHidden(true)
+    
     }
     
     func isHidden(_ isHidden: Bool){
