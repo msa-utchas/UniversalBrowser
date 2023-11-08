@@ -15,6 +15,27 @@ class OptionsView: UIView {
         viewInit()
     }
     
+    @IBOutlet weak var btnHistory: UIButton!{
+        didSet{
+            btnHistory.addTarget(self, action: #selector(ShowHistory), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var btnBookmark: UIButton!{
+        didSet{
+            btnBookmark.addTarget(self, action: #selector(ShowBookMark), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var btnShare: UIButton!{
+        didSet{
+            btnShare.addTarget(self, action: #selector(ShareLink), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var btnOIB: UIButton!{
+        didSet{
+            btnOIB.addTarget(self, action: #selector(openInBrowser), for: .touchUpInside)
+        }
+    }
+    
     
     
     required init?(coder: NSCoder) {
@@ -26,7 +47,7 @@ class OptionsView: UIView {
         let xibView = Bundle.module.loadNibNamed("OptionView", owner: self)![0] as! UIView
         xibView.frame = self.bounds
         addSubview(xibView)
-    
+        
     }
     
     func isHidden(_ isHidden: Bool){
@@ -42,6 +63,19 @@ class OptionsView: UIView {
     
 }
 
+extension OptionsView{
+    @objc private func ShowHistory(){
+       
+    }
+    @objc private func ShowBookMark(){
+        
+    }
+    @objc private func ShareLink(){
+  
+    }
+    @objc private func openInBrowser(){
 
+    }
+}
 
 
