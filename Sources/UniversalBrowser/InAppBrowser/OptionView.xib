@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionsView" customModule="UniversalBrowser">
             <connections>
                 <outlet property="backView" destination="DQv-qH-BaT" id="i0H-hr-f3F"/>
+                <outlet property="btnBookMark" destination="mid-iv-YuO" id="bw3-JD-hpz"/>
                 <outlet property="btnBookmark" destination="lrl-fD-IFL" id="4SZ-bT-qUA"/>
                 <outlet property="btnHistory" destination="snD-G9-td5" id="6nc-7g-3CK"/>
                 <outlet property="btnOIB" destination="DzE-oF-Jw5" id="IAE-el-LDT"/>
@@ -192,6 +193,43 @@
                                 <constraint firstItem="vQj-CE-ebd" firstAttribute="top" secondItem="gYb-ju-iag" secondAttribute="top" constant="3" id="x7Q-l8-eHJ"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOu-SD-RFg">
+                            <rect key="frame" x="75" y="192" width="370" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mid-iv-YuO">
+                                    <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                                </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pHm-EM-uIo">
+                                    <rect key="frame" x="25" y="2.6666666666666679" width="44" height="43.666666666666657"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="Juk-lh-km9"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add To BookMark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7p-lb-14q">
+                                    <rect key="frame" x="69" y="0.0" width="301" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="N7p-lb-14q" firstAttribute="top" secondItem="gOu-SD-RFg" secondAttribute="top" id="3la-Lb-QfE"/>
+                                <constraint firstAttribute="trailing" secondItem="N7p-lb-14q" secondAttribute="trailing" id="BYi-rk-iun"/>
+                                <constraint firstAttribute="bottom" secondItem="pHm-EM-uIo" secondAttribute="bottom" constant="3" id="CQu-mw-9se"/>
+                                <constraint firstAttribute="bottom" secondItem="N7p-lb-14q" secondAttribute="bottom" id="DNK-hd-YXu"/>
+                                <constraint firstAttribute="trailing" secondItem="mid-iv-YuO" secondAttribute="trailing" id="FxZ-Lx-xxc"/>
+                                <constraint firstAttribute="height" constant="50" id="HC8-ej-NDh"/>
+                                <constraint firstItem="pHm-EM-uIo" firstAttribute="top" secondItem="gOu-SD-RFg" secondAttribute="top" constant="3" id="HkT-ZX-Qqe"/>
+                                <constraint firstItem="mid-iv-YuO" firstAttribute="leading" secondItem="gOu-SD-RFg" secondAttribute="leading" id="Wni-vF-Qgl"/>
+                                <constraint firstItem="mid-iv-YuO" firstAttribute="top" secondItem="gOu-SD-RFg" secondAttribute="top" id="XQV-lH-sGF"/>
+                                <constraint firstAttribute="bottom" secondItem="mid-iv-YuO" secondAttribute="bottom" id="gIx-1w-kqs"/>
+                                <constraint firstItem="pHm-EM-uIo" firstAttribute="leading" secondItem="gOu-SD-RFg" secondAttribute="leading" constant="25" id="oV1-Bv-pIb"/>
+                                <constraint firstItem="N7p-lb-14q" firstAttribute="leading" secondItem="pHm-EM-uIo" secondAttribute="trailing" id="sOj-Zb-X4x"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <constraints>
@@ -199,6 +237,9 @@
                         <constraint firstItem="5iX-IP-5C2" firstAttribute="leading" secondItem="DQv-qH-BaT" secondAttribute="leading" id="PoY-kO-yHB"/>
                         <constraint firstItem="7gK-HK-VQH" firstAttribute="top" secondItem="5iX-IP-5C2" secondAttribute="bottom" constant="10" id="QZ7-NZ-kcc"/>
                         <constraint firstItem="7gK-HK-VQH" firstAttribute="centerX" secondItem="DQv-qH-BaT" secondAttribute="centerX" id="SkX-eJ-hOA"/>
+                        <constraint firstItem="gOu-SD-RFg" firstAttribute="leading" secondItem="gYb-ju-iag" secondAttribute="leading" id="Stf-M2-Wi5"/>
+                        <constraint firstItem="gOu-SD-RFg" firstAttribute="trailing" secondItem="gYb-ju-iag" secondAttribute="trailing" id="f6g-V5-tsu"/>
+                        <constraint firstItem="gOu-SD-RFg" firstAttribute="top" secondItem="gYb-ju-iag" secondAttribute="bottom" constant="10" id="gzK-iO-Ikg"/>
                         <constraint firstAttribute="height" constant="350" id="hEg-6t-s8o"/>
                         <constraint firstItem="5iX-IP-5C2" firstAttribute="top" secondItem="DQv-qH-BaT" secondAttribute="top" constant="4" id="mQs-oV-wbv"/>
                         <constraint firstItem="gYb-ju-iag" firstAttribute="leading" secondItem="DQv-qH-BaT" secondAttribute="leading" constant="75" id="mRD-Nr-3WL"/>
@@ -225,6 +266,7 @@
         <image name="clock.fill" catalog="system" width="128" height="123"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="globe" catalog="system" width="128" height="123"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

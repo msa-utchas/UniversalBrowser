@@ -35,6 +35,11 @@ class OptionsView: UIView {
             btnOIB.addTarget(self, action: #selector(openInBrowser), for: .touchUpInside)
         }
     }
+    @IBOutlet weak var btnBookMark: UIButton!{
+        didSet{
+            btnBookMark.addTarget(self, action: #selector(setBookmark), for: .touchUpInside)
+        }
+    }
     
     
     
@@ -75,6 +80,9 @@ extension OptionsView{
     }
     @objc private func openInBrowser(){
 
+    }
+    @objc private func setBookmark(){
+        
     }
 }
 
