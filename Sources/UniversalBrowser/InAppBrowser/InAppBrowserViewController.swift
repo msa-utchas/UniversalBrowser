@@ -58,6 +58,12 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _forwardButtonImage: UIImage? = UIImage(systemName: "arrow.right.circle")
     private var _backButtonImage: UIImage? = UIImage(systemName: "arrow.left.circle")
     private var _reloadButtonImage: UIImage? = UIImage(systemName: "arrow.clockwise.circle")
+    
+    private var _forwardButtonImageDisabled: UIImage? = UIImage(systemName: "arrow.right.circle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+    private var _backButtonImageDisabled: UIImage? = UIImage(systemName: "arrow.left.circle")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+    
+    
+    
     private var _buttonConfiguration: ButtonConfiguration = .allButtons
     private var _url: String = "apple.com"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
@@ -168,29 +174,35 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
                 topBackButton.isEnabled = true
                 bottomBackButton.isEnabled = true
                 
-                topBackButtonImage.isHidden = false
-                bottomBackButtonImage.isHidden = false
+                topBackButtonImage.image = _backButtonImage!
+                bottomBackButtonImage.image = _backButtonImage!
+                
             }
             else{
                 topBackButton.isEnabled = false
                 bottomBackButton.isEnabled = false
                 
-                topBackButtonImage.isHidden = true
-                bottomBackButtonImage.isHidden = true
+                topBackButtonImage.image = _backButtonImageDisabled!
+                bottomBackButtonImage.image = _backButtonImageDisabled!
+                
             }
             if webView.canGoForward{
                 topForwardButton.isEnabled = true
                 bottomForwardButton.isEnabled = true
                 
-                topForwardButtonImage.isHidden = false
-                bottomForwardButtonImage.isHidden = false
+               
+                
+                topForwardButtonImage.image = _forwardButtonImage!
+                bottomForwardButtonImage.image = _forwardButtonImage!
             }
             else{
                 topForwardButton.isEnabled = false
                 bottomForwardButton.isEnabled = false
                 
-                topForwardButtonImage.isHidden = true
-                bottomForwardButtonImage.isHidden = true
+                topForwardButtonImage.image = _forwardButtonImageDisabled!
+                bottomForwardButtonImage.image = _forwardButtonImageDisabled!
+                
+               
             }
         }
     }
@@ -272,10 +284,10 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         topReloadButtonImage.image = _reloadButtonImage
         bottomReloadButtonImage.image = _reloadButtonImage
         
-        topForwardButtonImage.isHidden = true
-        topBackButtonImage.isHidden = true
-        bottomForwardButtonImage.isHidden = true
-        bottomForwardButtonImage.isHidden = true
+        topForwardButtonImage.image = _forwardButtonImageDisabled
+        topBackButtonImage.image = _backButtonImageDisabled
+        bottomForwardButtonImage.image = _forwardButtonImageDisabled
+        bottomBackButtonImage.image = _backButtonImageDisabled
         
 
         switch _buttonConfiguration {
