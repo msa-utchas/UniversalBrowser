@@ -93,8 +93,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
                 self.present(vc, animated: true)
             }
         }
