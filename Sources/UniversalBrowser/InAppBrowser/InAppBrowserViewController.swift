@@ -149,6 +149,13 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     }
 
     @IBAction func openInBrowser(_ sender: Any) {
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            if let vc = UIStoryboard(name: "Bookmark", bundle: Bundle.module).instantiateViewController(withIdentifier: "BookmarkVC") as? BookmarkVC{
+                self.present(vc, animated: true)
+            }
+        }
+        return
+        
         if let url = URL(string: _url) {
             UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
                 if !success {
@@ -242,6 +249,14 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     }
 
     @IBAction func shareLink(_ sender: UIButton) {
+        DispatchQueue.main.asyncAfter(deadline: .now()){
+            if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
+                self.present(vc, animated: true)
+            }
+        }
+        return
+        
+        
         guard let linkURL = URL(string: _url) else {
                 return
             }
