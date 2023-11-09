@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -364,6 +364,8 @@
                         <outlet property="customOptionView" destination="7Fe-ZI-Qbw" id="KrI-GA-ZTu"/>
                         <outlet property="floatingExitButton" destination="HJr-MM-SL7" id="wfJ-W1-R3E"/>
                         <outlet property="optionViewBottomConstraint" destination="ZzY-v2-iap" id="c7W-ND-Ruj"/>
+                        <outlet property="toggleButtonImage" destination="i1W-OE-ccB" id="SJA-8c-g4A"/>
+                        <outlet property="toogleButton" destination="bgj-8P-ahy" id="2RH-8c-bjn"/>
                         <outlet property="topBackButton" destination="WSi-8s-a9W" id="mEc-xe-DVG"/>
                         <outlet property="topBackButtonImage" destination="sGq-in-oKB" id="Wnu-ng-skR"/>
                         <outlet property="topExitButton" destination="fGJ-QR-xty" id="SFP-5x-YQ4"/>
