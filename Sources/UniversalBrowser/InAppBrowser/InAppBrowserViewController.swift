@@ -21,6 +21,8 @@ public enum ButtonConfiguration {
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
 
+    @IBOutlet weak var toggleButtonImage: UIImageView!
+    @IBOutlet weak var toogleButton: UIButton!
     @IBOutlet weak var optionViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var closeCustomOptionsView: UIView!
@@ -67,13 +69,15 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     
     
+    
     private var _buttonConfiguration: ButtonConfiguration = .allButtons
     private var _url: String = "apple.com"
     private var _title: String = "apple"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
-    private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
+    private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "arrow.backward")
     
     private var _customOptionsToggle: Bool = true
+    private var _isOptionButtonEnabled = false
 
 
 
@@ -223,7 +227,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
     }
 
-
+    
+    public func setOptionsButton(isEnabled: Bool){
+        _isOptionButtonEnabled = isEnabled
+        
+    }
     
     public func setUIBackgroundColor(colour: UIColor) {
         _uiBackgroundColor = colour
@@ -337,6 +345,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             topForwardButton.isHidden = true
             topBackButton.isHidden = true
             topReloadButton.isHidden = true
+            topBackButtonImage.isHidden = true
+            topForwardButtonImage.isHidden = true
+            topReloadButtonImage.isHidden = true
         }
         
         floatingExitButton.backgroundColor = _floatingExitButtonBackgroundColor
@@ -345,6 +356,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         if let url = URL(string: _url){
             let request = URLRequest(url: url)
             webView.load(request)
+        }
+        
+        if !_isOptionButtonEnabled{
+            toogleButton.isHidden = true
+            toggleButtonImage.isHidden = true
         }
         
     }
