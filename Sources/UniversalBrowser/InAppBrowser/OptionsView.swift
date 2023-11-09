@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol OptionsViewDelegate: NSObject{
+    func openInBrowser()
+    func shareLink()
+    func showHistory()
+    func showBookmarks()
+}
+
 @available(iOS 13.0, *)
 class OptionsView: UIView {
    
+    weak var customDelegate: OptionsViewDelegate?
     
     @IBOutlet weak var bookmarkBackView: UIView!{
         didSet{
@@ -99,16 +107,16 @@ class OptionsView: UIView {
 @available(iOS 13.0, *)
 extension OptionsView{
     @objc private func ShowHistory(){
-       
+        customDelegate?.showHistory()
     }
     @objc private func ShowBookMark(){
-        
+        customDelegate?.showBookmarks()
     }
     @objc private func ShareLink(){
-  
+        customDelegate?.shareLink()
     }
     @objc private func openInBrowser(){
-
+        customDelegate?.openInBrowser()
     }
     @objc private func setBookmark(){
         

@@ -100,11 +100,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         navigationController?.navigationBar.isHidden = true
         setupUI()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
-                self.present(vc, animated: true)
-            }
-        }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.loadNewUrl(_:)),
+                                               name: .loadNewUrl, object: nil)
     }
     
     func forwardButtonAction() {
@@ -175,22 +173,6 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             closeOptionView()
         }
         
-    }
-    @IBAction func openInBrowser(_ sender: Any) {
-//        DispatchQueue.main.asyncAfter(deadline: .now()){
-//            if let vc = UIStoryboard(name: "Bookmark", bundle: Bundle.module).instantiateViewController(withIdentifier: "BookmarkVC") as? BookmarkVC{
-//                self.present(vc, animated: true)
-//            }
-//        }
-//        return
-        
-        if let url = URL(string: _url) {
-            UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
-                if !success {
-                    print("URL failed to open")
-                }
-            }
-        }
     }
     @IBAction func viewTapAction(_ sender: Any) {
         closeOptionView()
@@ -285,29 +267,6 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         UIGraphicsEndImageContext()
         return newImage
     }
-
-    @IBAction func shareLink(_ sender: UIButton) {
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-            if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
-                self.present(vc, animated: true)
-            }
-        }
-        return
-        
-        
-        guard let linkURL = URL(string: _url) else {
-                return
-            }
-        
-            let activityViewController = UIActivityViewController(activityItems: [linkURL], applicationActivities: nil)
-            
-            if let popoverPresentationController = activityViewController.popoverPresentationController {
-                popoverPresentationController.sourceView = sender
-            }
-        
-            present(activityViewController, animated: true, completion: nil)
-        
-    }
     
     func openOptionView() {
         closeCustomOptionsView.isHidden = false
@@ -395,3 +354,52 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
 }
 
+@available(iOS 13.0, *)
+extension InAppBrowserViewController{
+    @objc func loadNewUrl(_ notification: NSNotification) {
+        if let urlString = notification.userInfo?["url"] as? String, let url = URL(string: urlString) {
+            self.setUrl(url: urlString)
+            let request = URLRequest(url: url)
+            self.webView.load(request)
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+extension InAppBrowserViewController: OptionsViewDelegate{
+    func openInBrowser() {
+        if let url = URL(string: _url) {
+            UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
+                if !success {
+                    print("URL failed to open")
+                }
+            }
+        }
+    }
+    
+    func shareLink() {
+        guard let linkURL = URL(string: _url) else {
+            return
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [linkURL], applicationActivities: nil)
+        
+//        if let popoverPresentationController = activityViewController.popoverPresentationController {
+//            popoverPresentationController.sourceView = sender
+//        }
+        
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func showHistory() {
+        if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
+            self.present(vc, animated: true)
+        }
+    }
+    
+    func showBookmarks() {
+        if let vc = UIStoryboard(name: "Bookmark", bundle: Bundle.module).instantiateViewController(withIdentifier: "BookmarkVC") as? BookmarkVC{
+            self.present(vc, animated: true)
+        }
+    }
+}
