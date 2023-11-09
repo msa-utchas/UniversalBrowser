@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qD2-RS-Jic" userLabel="navView">
-                                <rect key="frame" x="0.0" y="48" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="934-nE-GCB">
                                         <rect key="frame" x="308.66666666666669" y="4.6666666666666643" width="64.333333333333314" height="35"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ycm-6O-73l">
-                                <rect key="frame" x="0.0" y="112" width="393" height="664"/>
+                                <rect key="frame" x="0.0" y="123" width="393" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QEd-q0-R5q">
@@ -81,7 +81,7 @@
                             <constraint firstItem="Ycm-6O-73l" firstAttribute="top" secondItem="qD2-RS-Jic" secondAttribute="bottom" constant="20" id="Yp0-xk-FCk"/>
                             <constraint firstItem="Ycm-6O-73l" firstAttribute="leading" secondItem="T79-fm-0xS" secondAttribute="leading" id="cY1-xN-p16"/>
                             <constraint firstAttribute="trailing" secondItem="qD2-RS-Jic" secondAttribute="trailing" id="dkG-Em-MFS"/>
-                            <constraint firstItem="qD2-RS-Jic" firstAttribute="top" secondItem="T79-fm-0xS" secondAttribute="top" constant="48" id="uRD-4f-GD1"/>
+                            <constraint firstItem="qD2-RS-Jic" firstAttribute="top" secondItem="Glj-ao-jsA" secondAttribute="top" id="uRD-4f-GD1"/>
                             <constraint firstAttribute="trailing" secondItem="QEd-q0-R5q" secondAttribute="trailing" id="vOp-1J-8Bp"/>
                         </constraints>
                     </view>

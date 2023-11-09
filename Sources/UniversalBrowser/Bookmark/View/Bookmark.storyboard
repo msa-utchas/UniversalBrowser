@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KX-Eo-08Y" userLabel="navView">
-                                <rect key="frame" x="0.0" y="48" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXy-iA-IzU">
                                         <rect key="frame" x="308.66666666666669" y="4.6666666666666643" width="64.333333333333314" height="35"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ief-4B-3IX">
-                                <rect key="frame" x="0.0" y="112" width="393" height="664"/>
+                                <rect key="frame" x="0.0" y="123" width="393" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRV-m4-2xa">
@@ -79,7 +79,7 @@
                             <constraint firstItem="nRV-m4-2xa" firstAttribute="top" secondItem="Ief-4B-3IX" secondAttribute="bottom" id="LKt-vO-KmC"/>
                             <constraint firstItem="Ief-4B-3IX" firstAttribute="top" secondItem="9KX-Eo-08Y" secondAttribute="bottom" constant="20" id="VcE-U5-iGi"/>
                             <constraint firstAttribute="trailing" secondItem="Ief-4B-3IX" secondAttribute="trailing" id="Vzh-Pn-afG"/>
-                            <constraint firstItem="9KX-Eo-08Y" firstAttribute="top" secondItem="YHM-xF-Ope" secondAttribute="top" constant="48" id="XzS-km-Hbe"/>
+                            <constraint firstItem="9KX-Eo-08Y" firstAttribute="top" secondItem="uLU-Zz-Onn" secondAttribute="top" id="XzS-km-Hbe"/>
                             <constraint firstItem="9KX-Eo-08Y" firstAttribute="leading" secondItem="YHM-xF-Ope" secondAttribute="leading" id="aRe-CB-2Gi"/>
                             <constraint firstItem="Ief-4B-3IX" firstAttribute="leading" secondItem="YHM-xF-Ope" secondAttribute="leading" id="bol-Gn-8Ls"/>
                             <constraint firstAttribute="trailing" secondItem="nRV-m4-2xa" secondAttribute="trailing" id="ixF-OF-SPh"/>
