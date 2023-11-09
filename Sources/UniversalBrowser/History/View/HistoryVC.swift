@@ -9,7 +9,7 @@ import UIKit
 
 class HistoryVC: UIViewController {
     
-    var allHistory = CoredataManager.shared.getAllHistory()
+    var allHistory = CoredataManager.shared.getAllHistoryByDateSorted()
     
     @IBOutlet weak var btnDone: UIButton!{
         didSet{

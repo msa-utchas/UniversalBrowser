@@ -9,7 +9,7 @@ import UIKit
 
 class BookmarkVC: UIViewController {
     
-    var allBookmark = CoredataManager.shared.getAllBookmark()
+    var allBookmark = CoredataManager.shared.getAllBookmarkByDateSorted()
     
     @IBOutlet weak var btnDone: UIButton!{
         didSet{

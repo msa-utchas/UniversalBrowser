@@ -12,6 +12,7 @@ protocol OptionsViewDelegate: NSObject{
     func shareLink()
     func showHistory()
     func showBookmarks()
+    func setBookmark()
 }
 
 @available(iOS 13.0, *)
@@ -66,16 +67,6 @@ class OptionsView: UIView {
             btnShare.addTarget(self, action: #selector(ShareLink), for: .touchUpInside)
         }
     }
-    @IBOutlet weak var btnOIB: UIButton!{
-        didSet{
-            btnOIB.addTarget(self, action: #selector(openInBrowser), for: .touchUpInside)
-        }
-    }
-    @IBOutlet weak var btnBookMark: UIButton!{
-        didSet{
-            btnBookMark.addTarget(self, action: #selector(setBookmark), for: .touchUpInside)
-        }
-    }
     
     
     
@@ -115,12 +106,6 @@ extension OptionsView{
     @objc private func ShareLink(){
         customDelegate?.shareLink()
     }
-    @objc private func openInBrowser(){
-        customDelegate?.openInBrowser()
-    }
-    @objc private func setBookmark(){
-        
-    }
 }
 
 
@@ -152,14 +137,10 @@ extension OptionsView: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
-          
-            
+          customDelegate?.openInBrowser()
         }
-        else
-        {
-           
-        
-    
+        else if indexPath.row == 1{
+           customDelegate?.setBookmark()
         }
     }
     

@@ -73,7 +73,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _floatingExitButtonBackgroundColor: UIColor = .green
     private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
     
-    private var _customOptionsToggle: Bool = false
+    private var _customOptionsToggle: Bool = true
 
 
 
@@ -82,7 +82,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         super.viewDidLoad()
         
         
-       
+       customOptionView.customDelegate = self
         
         
         webView.navigationDelegate = self
@@ -182,7 +182,6 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             _url = url.absoluteString
             _title = title
             CoredataManager.shared.insertHistory(url: _url, title: _title)
-            CoredataManager.shared.insertBookmark(url: _url, title: _title)
         }
         
         if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
@@ -367,7 +366,13 @@ extension InAppBrowserViewController{
 
 @available(iOS 13.0, *)
 extension InAppBrowserViewController: OptionsViewDelegate{
+    func setBookmark() {
+        closeOptionView()
+        CoredataManager.shared.insertBookmark(url: _url, title: _title)
+    }
+    
     func openInBrowser() {
+        closeOptionView()
         if let url = URL(string: _url) {
             UIApplication.shared.open(url, options: [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]) { (success) in
                 if !success {
@@ -378,6 +383,7 @@ extension InAppBrowserViewController: OptionsViewDelegate{
     }
     
     func shareLink() {
+        closeOptionView()
         guard let linkURL = URL(string: _url) else {
             return
         }
@@ -392,12 +398,14 @@ extension InAppBrowserViewController: OptionsViewDelegate{
     }
     
     func showHistory() {
+        closeOptionView()
         if let vc = UIStoryboard(name: "History", bundle: Bundle.module).instantiateViewController(withIdentifier: "HistoryVC") as? HistoryVC{
             self.present(vc, animated: true)
         }
     }
     
     func showBookmarks() {
+        closeOptionView()
         if let vc = UIStoryboard(name: "Bookmark", bundle: Bundle.module).instantiateViewController(withIdentifier: "BookmarkVC") as? BookmarkVC{
             self.present(vc, animated: true)
         }
