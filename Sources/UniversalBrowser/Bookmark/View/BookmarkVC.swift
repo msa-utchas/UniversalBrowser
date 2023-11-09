@@ -100,4 +100,11 @@ extension BookmarkVC: UITableViewDelegate, UITableViewDataSource{
             tableView.endUpdates()
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = allBookmark[indexPath.row].url{
+            let dict:[String:String] = ["url":url]
+            NotificationCenter.default.post(name: .loadNewUrl, object: nil, userInfo: dict)
+        }
+        self.dismiss(animated: true)
+    }
 }
