@@ -71,7 +71,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     private var _url: String = "apple.com"
     private var _title: String = "apple"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
-    private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "xmark.circle")
+    private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "arrow.backward")
     
     private var _customOptionsToggle: Bool = true
 
@@ -337,6 +337,9 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             topForwardButton.isHidden = true
             topBackButton.isHidden = true
             topReloadButton.isHidden = true
+            topBackButtonImage.isHidden = true
+            topForwardButtonImage.isHidden = true
+            topReloadButtonImage.isHidden = true
         }
         
         floatingExitButton.backgroundColor = _floatingExitButtonBackgroundColor
