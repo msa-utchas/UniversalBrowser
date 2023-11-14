@@ -184,6 +184,31 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     @IBAction func viewTapAction(_ sender: Any) {
         closeOptionView()
     }
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        // Check the navigation action and make a decision
+        // if navigationAction.navigationType == .linkActivated {
+        //     // Handle link click
+        //     decisionHandler(.allow)  // To prevent the link from being followed
+        // } else {
+        //     print("new link clicked not-activated")
+        //     decisionHandler(.allow)
+        // }
+        print("new link clicked")
+        activityLoader.isHidden = false
+        activityLoader.startAnimating()
+        decisionHandler(.allow)
+    }
+    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        // Check the navigation type and make a decision
+        // if navigationType == .linkClicked {
+        //     // Handle link click
+        //     return false  // To prevent the link from being followed
+        // }
+        print("new link clicked")
+        activityLoader.isHidden = false
+        activityLoader.startAnimating()
+        return true
+    }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activityLoader.isHidden = true
         activityLoader.stopAnimating()
