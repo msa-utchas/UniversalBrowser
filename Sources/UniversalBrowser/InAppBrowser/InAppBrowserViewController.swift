@@ -51,6 +51,11 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     @IBOutlet weak var topExitButton: UIButton!
     @IBOutlet weak var floatingExitButton: UIButton!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!{
+        didSet{
+            activityLoader.isHidden = true
+        }
+    }
     
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
     
@@ -119,6 +124,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     func reloadButtonAction() {
         webView.reload()
+        activityLoader.isHidden = false
+        activityLoader.startAnimating()
     }
     func exitButtonAction() {
         if let nav = navigationController{
@@ -178,6 +185,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         closeOptionView()
     }
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityLoader.isHidden = true
+        activityLoader.stopAnimating()
         if let url = webView.url, let title = webView.title{
             _url = url.absoluteString
             _title = title
@@ -345,6 +354,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         if let url = URL(string: _url){
             let request = URLRequest(url: url)
             webView.load(request)
+            activityLoader.isHidden = false
+            activityLoader.startAnimating()
         }
         
     }
@@ -360,6 +371,8 @@ extension InAppBrowserViewController{
             self.setUrl(url: urlString)
             let request = URLRequest(url: url)
             self.webView.load(request)
+            activityLoader.isHidden = false
+            activityLoader.startAnimating()
         }
     }
 }
