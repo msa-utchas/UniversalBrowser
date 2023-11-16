@@ -18,6 +18,11 @@ public enum ButtonConfiguration {
     case reload
 }
 
+public enum OpeningMethod {
+    case fromUrlString
+    case fromFile
+}
+
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
 
@@ -78,6 +83,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     private var _customOptionsToggle: Bool = true
     private var _isOptionButtonEnabled = false
+    
+    private var _openingMethod: OpeningMethod = .fromUrlString
 
 
 
@@ -107,6 +114,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.loadNewUrl(_:)),
                                                name: .loadNewUrl, object: nil)
+        
     }
     
     func forwardButtonAction() {
@@ -265,6 +273,10 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     public func setFloatingExitButtonImage(image: UIImage?) {
         _floatingExitButtonImage = resizeImage(image: image)
     }
+    
+    public func setOpeningMethod(method: OpeningMethod){
+        _openingMethod = method
+    }
     func resizeImage(image: UIImage?) -> UIImage? {
   
         let newSize = CGSize(width: 30, height: 30)
@@ -352,15 +364,24 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
         floatingExitButton.backgroundColor = _floatingExitButtonBackgroundColor
         floatingExitButton.setImage(_floatingExitButtonImage, for: .normal)
-
-        if let url = URL(string: _url){
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
         
         if !_isOptionButtonEnabled{
             toogleButton.isHidden = true
             toggleButtonImage.isHidden = true
+        }
+        
+        
+        
+                
+        
+        switch _openingMethod {
+        case .fromUrlString:
+            if let url = URL(string: _url){
+                let request = URLRequest(url: url)
+                webView.load(request)
+            }
+        case .fromFile:
+            selectHTMLFile()
         }
         
     }
@@ -427,3 +448,40 @@ extension InAppBrowserViewController: OptionsViewDelegate{
         }
     }
 }
+
+
+
+
+
+@available(iOS 13.0, *)
+extension InAppBrowserViewController: UIDocumentPickerDelegate{
+    func selectHTMLFile() {
+           let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.html"], in: .import)
+           documentPicker.delegate = self
+           documentPicker.allowsMultipleSelection = false
+           present(documentPicker, animated: true, completion: nil)
+       }
+    
+    func loadHTMLFile(from url: URL) {
+
+            print(url)
+//            let htmlString = try String(contentsOf: url, encoding: .utf8)
+            webView.loadFileURL(url, allowingReadAccessTo: url)
+            let request = URLRequest(url: url)
+            webView.load(request)
+           
+        
+
+    }
+    
+    
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let selectedFileURL = urls.first {
+            loadHTMLFile(from: selectedFileURL)
+        }
+    }
+
+    
+}
+
