@@ -322,21 +322,27 @@
                                     <outletCollection property="gestureRecognizers" destination="cLV-8O-9fb" appends="YES" id="0Cu-gh-FPN"/>
                                 </connections>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="kxW-DD-twW">
+                                <rect key="frame" x="0.0" y="103" width="393" height="679"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="top" secondItem="HJr-MM-SL7" secondAttribute="bottom" constant="30" id="2L3-bj-N3Y"/>
                             <constraint firstItem="wOb-CN-tZT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7p6-Vr-smz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kxW-DD-twW" secondAttribute="trailing" id="9eA-nJ-7p4"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="top" secondItem="wOb-CN-tZT" secondAttribute="bottom" id="FLh-Bq-SsT"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GUb-Je-fAq"/>
                             <constraint firstItem="GzR-CY-wyk" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="HC3-W6-64J"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="HcK-un-MT5"/>
+                            <constraint firstItem="GzR-CY-wyk" firstAttribute="top" secondItem="kxW-DD-twW" secondAttribute="bottom" id="KR9-HE-L90"/>
                             <constraint firstItem="Pcb-Pf-atq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Lwg-Qa-qjH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wOb-CN-tZT" secondAttribute="trailing" id="QWe-hQ-LUq"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="RQS-tL-SsD"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Roj-cd-PJC"/>
                             <constraint firstAttribute="bottom" secondItem="GzR-CY-wyk" secondAttribute="bottom" id="Sx5-rK-z0g"/>
+                            <constraint firstItem="kxW-DD-twW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XHn-oe-9Xw"/>
                             <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="top" secondItem="Pcb-Pf-atq" secondAttribute="bottom" id="XwN-Fo-V9n"/>
                             <constraint firstAttribute="bottom" secondItem="7Fe-ZI-Qbw" secondAttribute="bottom" id="ZzY-v2-iap"/>
                             <constraint firstItem="7Fe-ZI-Qbw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aaK-tC-qI7"/>
@@ -347,10 +353,12 @@
                             <constraint firstItem="wOb-CN-tZT" firstAttribute="top" secondItem="xqN-Jy-m7Y" secondAttribute="bottom" id="pw2-Ma-dts"/>
                             <constraint firstItem="Pcb-Pf-atq" firstAttribute="top" secondItem="xqN-Jy-m7Y" secondAttribute="bottom" id="rek-Q2-ED4"/>
                             <constraint firstItem="HJr-MM-SL7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ts4-Hd-uKO"/>
+                            <constraint firstItem="kxW-DD-twW" firstAttribute="top" secondItem="xqN-Jy-m7Y" secondAttribute="bottom" id="ues-Xx-ITC"/>
                             <constraint firstItem="xqN-Jy-m7Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="w5E-CF-9BK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityLoader" destination="kxW-DD-twW" id="7fX-XP-RhM"/>
                         <outlet property="backgroundView" destination="5EZ-qb-Rvc" id="G5s-mD-Os2"/>
                         <outlet property="bottomBackButton" destination="ZFn-pX-PKM" id="KUb-CZ-ZMo"/>
                         <outlet property="bottomBackButtonImage" destination="ogb-2N-rp6" id="sMK-po-j5p"/>
@@ -510,7 +518,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
