@@ -18,9 +18,15 @@ public enum ButtonConfiguration {
     case reload
 }
 
+public enum OpeningMethod {
+    case fromUrlString
+    case fromFile
+}
+
 @available(iOS 13.0, *)
 public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
-
+    
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     @IBOutlet weak var toggleButtonImage: UIImageView!
     @IBOutlet weak var toogleButton: UIButton!
     @IBOutlet weak var optionViewBottomConstraint: NSLayoutConstraint!
@@ -32,12 +38,12 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     @IBOutlet weak var topForwardButtonImage: UIImageView!
     @IBOutlet weak var topReloadButtonImage: UIImageView!
     
-
+    
     @IBOutlet weak var bottomBackButtonImage: UIImageView!
     @IBOutlet weak var bottomForwardButtonImage: UIImageView!
     @IBOutlet weak var bottomReloadButtonImage: UIImageView!
     
-
+    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var backgroundView: UIView!
@@ -78,15 +84,19 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     
     private var _customOptionsToggle: Bool = true
     private var _isOptionButtonEnabled = false
-
-
-
-
+    
+    private var _openingMethod: OpeningMethod = .fromUrlString
+    
+    
+    
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityLoader.stopAnimating()
+        activityLoader.isHidden = true
         
-       customOptionView.customDelegate = self
+        customOptionView.customDelegate = self
         
         
         webView.navigationDelegate = self
@@ -102,13 +112,100 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
         
         navigationController?.navigationBar.isHidden = true
+        
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoBack), options: .new, context: nil)
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoForward), options: .new, context: nil)
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.isLoading), options: .new, context: nil)
         setupUI()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.loadNewUrl(_:)),
                                                name: .loadNewUrl, object: nil)
+        
     }
     
+    
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == #keyPath(WKWebView.canGoBack) {
+            if let newValue = change?[.newKey] as? Bool {
+                self.setupBackForwardButton()
+                
+            }
+            else
+            {
+                self.setupBackForwardButton()
+                
+            }
+            
+        }
+        if keyPath == #keyPath(WKWebView.canGoForward) {
+            if let newValue = change?[.newKey] as? Bool {
+                self.setupBackForwardButton()
+                
+            }
+            else{
+                self.setupBackForwardButton()
+            }
+        }
+        
+        if keyPath == #keyPath(WKWebView.isLoading) {
+            if let newValue = change?[.newKey] as? Bool {
+                
+                if newValue{
+                    self.activityLoader.isHidden = false
+                    self.activityLoader.startAnimating()
+                    
+                } else {
+                    self.activityLoader.stopAnimating()
+                    self.activityLoader.isHidden = true
+                }
+            }
+        }
+        
+    }
+    
+    func setupBackForwardButton(){
+        
+        if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
+            
+            if webView.canGoBack{
+                topBackButton.isEnabled = true
+                bottomBackButton.isEnabled = true
+                
+                topBackButtonImage.image = _backButtonImage!
+                bottomBackButtonImage.image = _backButtonImage!
+                
+            }
+            else{
+                topBackButton.isEnabled = false
+                bottomBackButton.isEnabled = false
+                
+                topBackButtonImage.image = _backButtonImageDisabled!
+                bottomBackButtonImage.image = _backButtonImageDisabled!
+                
+            }
+            if webView.canGoForward{
+                topForwardButton.isEnabled = true
+                bottomForwardButton.isEnabled = true
+                
+                
+                
+                topForwardButtonImage.image = _forwardButtonImage!
+                bottomForwardButtonImage.image = _forwardButtonImage!
+            }
+            else{
+                topForwardButton.isEnabled = false
+                bottomForwardButton.isEnabled = false
+                
+                topForwardButtonImage.image = _forwardButtonImageDisabled!
+                bottomForwardButtonImage.image = _forwardButtonImageDisabled!
+                
+                
+            }
+        }
+        
+    }
     func forwardButtonAction() {
         if webView.canGoForward{
             webView.goForward()
@@ -136,38 +233,38 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     @IBAction func topExitButtonTapped(_ sender: UIButton) {
         exitButtonAction()
     }
-
+    
     @IBAction func topForwardButtonTapped(_ sender: UIButton) {
         forwardButtonAction()
     }
-
+    
     @IBAction func topBackButtonTapped(_ sender: UIButton) {
         backButtonAction()
     }
-
+    
     @IBAction func topReloadButtonTapped(_ sender: UIButton) {
         reloadButtonAction()
     }
-
+    
     @IBAction func bottomForwardButtonTapped(_ sender: UIButton) {
         forwardButtonAction()
     }
-
+    
     @IBAction func bottomBackButtonTapped(_ sender: UIButton) {
-       backButtonAction()
+        backButtonAction()
     }
-
+    
     @IBAction func bottomReloadButtonTapped(_ sender: UIButton) {
         reloadButtonAction()
         
     }
-
+    
     @IBAction func flottingExitButtonTapped(_ sender: UIButton) {
         exitButtonAction()
     }
-
+    
     @IBAction func toggleOptions(_ sender: Any) {
-
+        
         if(_customOptionsToggle){
             
             openOptionView()
@@ -188,45 +285,8 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
             CoredataManager.shared.insertHistory(url: _url, title: _title)
         }
         
-        if(_buttonConfiguration == .allButtons || _buttonConfiguration == .backAndForward){
-            
-            if webView.canGoBack{
-                topBackButton.isEnabled = true
-                bottomBackButton.isEnabled = true
-                
-                topBackButtonImage.image = _backButtonImage!
-                bottomBackButtonImage.image = _backButtonImage!
-                
-            }
-            else{
-                topBackButton.isEnabled = false
-                bottomBackButton.isEnabled = false
-                
-                topBackButtonImage.image = _backButtonImageDisabled!
-                bottomBackButtonImage.image = _backButtonImageDisabled!
-                
-            }
-            if webView.canGoForward{
-                topForwardButton.isEnabled = true
-                bottomForwardButton.isEnabled = true
-                
-               
-                
-                topForwardButtonImage.image = _forwardButtonImage!
-                bottomForwardButtonImage.image = _forwardButtonImage!
-            }
-            else{
-                topForwardButton.isEnabled = false
-                bottomForwardButton.isEnabled = false
-                
-                topForwardButtonImage.image = _forwardButtonImageDisabled!
-                bottomForwardButtonImage.image = _forwardButtonImageDisabled!
-                
-               
-            }
-        }
     }
-
+    
     
     public func setOptionsButton(isEnabled: Bool){
         _isOptionButtonEnabled = isEnabled
@@ -265,8 +325,12 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
     public func setFloatingExitButtonImage(image: UIImage?) {
         _floatingExitButtonImage = resizeImage(image: image)
     }
+    
+    public func setOpeningMethod(method: OpeningMethod){
+        _openingMethod = method
+    }
     func resizeImage(image: UIImage?) -> UIImage? {
-  
+        
         let newSize = CGSize(width: 30, height: 30)
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         image?.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
@@ -283,7 +347,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         }
         _customOptionsToggle.toggle()
     }
-
+    
     func closeOptionView() {
         closeCustomOptionsView.isHidden = true
         UIView.animate(withDuration: 0.3) {
@@ -297,7 +361,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         optionViewBottomConstraint.constant = -350
         backgroundView.backgroundColor = _uiBackgroundColor
         floatingExitButton.isHidden = !_isFloatingButtonEnabled
-
+        
         floatingExitButton.layer.cornerRadius = floatingExitButton.frame.height / 2
         floatingExitButton.layer.masksToBounds = true
         floatingExitButton.backgroundColor = .red
@@ -316,7 +380,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         bottomForwardButtonImage.image = _forwardButtonImageDisabled
         bottomBackButtonImage.image = _backButtonImageDisabled
         
-
+        
         switch _buttonConfiguration {
         case .allButtons:
             break
@@ -352,15 +416,24 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
         
         floatingExitButton.backgroundColor = _floatingExitButtonBackgroundColor
         floatingExitButton.setImage(_floatingExitButtonImage, for: .normal)
-
-        if let url = URL(string: _url){
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
         
         if !_isOptionButtonEnabled{
             toogleButton.isHidden = true
             toggleButtonImage.isHidden = true
+        }
+        
+        
+        
+        
+        
+        switch _openingMethod {
+        case .fromUrlString:
+            if let url = URL(string: _url){
+                let request = URLRequest(url: url)
+                webView.load(request)
+            }
+        case .fromFile:
+            selectHTMLFile()
         }
         
     }
@@ -406,10 +479,6 @@ extension InAppBrowserViewController: OptionsViewDelegate{
         
         let activityViewController = UIActivityViewController(activityItems: [linkURL], applicationActivities: nil)
         
-//        if let popoverPresentationController = activityViewController.popoverPresentationController {
-//            popoverPresentationController.sourceView = sender
-//        }
-        
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -427,3 +496,36 @@ extension InAppBrowserViewController: OptionsViewDelegate{
         }
     }
 }
+
+
+
+
+
+@available(iOS 13.0, *)
+extension InAppBrowserViewController: UIDocumentPickerDelegate{
+    func selectHTMLFile() {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.html"], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
+    func loadHTMLFile(from url: URL) {
+        
+        print(url)
+
+        webView.loadFileURL(url, allowingReadAccessTo: url)
+        let request = URLRequest(url: url)
+        webView.load(request)
+        
+    }
+    
+    
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let selectedFileURL = urls.first {
+            loadHTMLFile(from: selectedFileURL)
+        }
+    }
+}
+
