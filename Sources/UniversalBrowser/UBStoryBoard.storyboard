@@ -504,6 +504,40 @@
             </objects>
             <point key="canvasLocation" x="803.81679389312978" y="3.5211267605633805"/>
         </scene>
+        <!--PaymentVC-->
+        <scene sceneID="0UK-we-D0h">
+            <objects>
+                <viewController storyboardIdentifier="PaymentVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KFK-I2-zAB" customClass="PaymentVC" customModule="UniversalBrowser" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EOh-Zu-1sZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSp-v5-HtV">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zS7-Gf-BAv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zS7-Gf-BAv" firstAttribute="trailing" secondItem="RSp-v5-HtV" secondAttribute="trailing" id="T8j-FD-LU8"/>
+                            <constraint firstItem="RSp-v5-HtV" firstAttribute="top" secondItem="zS7-Gf-BAv" secondAttribute="top" id="Tgh-qL-Dbi"/>
+                            <constraint firstItem="RSp-v5-HtV" firstAttribute="leading" secondItem="zS7-Gf-BAv" secondAttribute="leading" id="UCo-1E-3E2"/>
+                            <constraint firstItem="zS7-Gf-BAv" firstAttribute="bottom" secondItem="RSp-v5-HtV" secondAttribute="bottom" id="UdB-cU-Vao"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="RSp-v5-HtV" id="5Pm-zg-r8G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7HX-lU-Tlt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895.4198473282443" y="-18.30985915492958"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
