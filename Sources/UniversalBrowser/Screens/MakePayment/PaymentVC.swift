@@ -49,9 +49,9 @@ public class PaymentVC: UIViewController {
             guard let self = self else { return }
             switch paymentResponseStatus {
             case .success:
-                showPaymentAlert(message: "Payment was successful.")
+                self.showPaymentAlert(message: "Payment was successful.")
             case .failed:
-                showPaymentAlert(message: "Payment failed.")
+                self.showPaymentAlert(message: "Payment failed.")
             case .none:
                 print("Payment began")
             }
