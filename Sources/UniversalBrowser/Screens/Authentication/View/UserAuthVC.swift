@@ -10,6 +10,8 @@ import WebKit
 
 class UserAuthVC: UIViewController{
     
+    public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "UserAuthVC") as! UserAuthVC
+    
     @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
