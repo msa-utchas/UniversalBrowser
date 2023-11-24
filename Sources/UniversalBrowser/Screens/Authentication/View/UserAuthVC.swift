@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class UserAuthVC: UIViewController{
+public class UserAuthVC: UIViewController{
     
     public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "UserAuthVC") as! UserAuthVC
     
