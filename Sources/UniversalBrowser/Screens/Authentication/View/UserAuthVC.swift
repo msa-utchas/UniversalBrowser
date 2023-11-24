@@ -14,7 +14,7 @@ public class UserAuthVC: UIViewController{
     
     @IBOutlet weak var webView: WKWebView!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupWebView()
@@ -48,7 +48,7 @@ extension UserAuthVC {
 // MARK: - WKScriptMessageHandler
 
 extension UserAuthVC: WKScriptMessageHandler {
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
         if let bodyStr = message.body as? String, let data = bodyStr.data(using: .utf8){
             do {
