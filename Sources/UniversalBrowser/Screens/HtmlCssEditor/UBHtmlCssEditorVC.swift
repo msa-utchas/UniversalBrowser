@@ -12,6 +12,9 @@ public class UBHtmlCssEditorVC: UIViewController{
 
     @IBOutlet weak var textArea: UITextView!
     @IBOutlet weak var webView: WKWebView!
+    @IBAction func dismissAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     var capturedText: String = ""
     
     public override func viewDidLoad() {

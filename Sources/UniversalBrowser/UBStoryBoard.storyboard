@@ -431,13 +431,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Your HTML and CSS Code Here: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoS-Od-opH">
-                                <rect key="frame" x="10" y="69" width="373" height="21"/>
+                                <rect key="frame" x="10" y="94" width="373" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4A3-ce-Ezp">
-                                <rect key="frame" x="10" y="110" width="373" height="220"/>
+                                <rect key="frame" x="10" y="135" width="373" height="220"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="45n-xs-4in"/>
@@ -447,7 +447,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L02-Co-ceP">
-                                <rect key="frame" x="10" y="338" width="124" height="35"/>
+                                <rect key="frame" x="10" y="363" width="124" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Of5-XN-iAp"/>
                                     <constraint firstAttribute="width" constant="124" id="iNP-OX-5ll"/>
@@ -458,10 +458,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1Q-Np-H1C">
-                                <rect key="frame" x="10" y="383" width="373" height="425"/>
+                                <rect key="frame" x="10" y="408" width="373" height="400"/>
                                 <subviews>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ep-Oc-1pc">
-                                        <rect key="frame" x="1" y="1" width="371" height="423"/>
+                                        <rect key="frame" x="1" y="1" width="371" height="398"/>
                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -477,6 +477,14 @@
                                     <constraint firstAttribute="bottom" secondItem="8Ep-Oc-1pc" secondAttribute="bottom" constant="1" id="pNH-BP-HlN"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lx-hV-hSL">
+                                <rect key="frame" x="10" y="59" width="51" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=" "/>
+                                <connections>
+                                    <action selector="dismissAction:" destination="760-mm-nxN" eventType="touchUpInside" id="dDi-IF-f6y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gBz-3L-1kl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -487,9 +495,11 @@
                             <constraint firstItem="L02-Co-ceP" firstAttribute="leading" secondItem="gBz-3L-1kl" secondAttribute="leading" constant="10" id="IGB-dT-It4"/>
                             <constraint firstItem="4A3-ce-Ezp" firstAttribute="leading" secondItem="gBz-3L-1kl" secondAttribute="leading" constant="10" id="M39-Of-K0f"/>
                             <constraint firstItem="DoS-Od-opH" firstAttribute="centerX" secondItem="yxF-Cu-8C5" secondAttribute="centerX" id="RmA-73-N7T"/>
+                            <constraint firstItem="9Lx-hV-hSL" firstAttribute="leading" secondItem="gBz-3L-1kl" secondAttribute="leading" constant="10" id="UBt-cF-0xd"/>
                             <constraint firstItem="gBz-3L-1kl" firstAttribute="trailing" secondItem="r1Q-Np-H1C" secondAttribute="trailing" constant="10" id="Woq-Ty-7j8"/>
+                            <constraint firstItem="DoS-Od-opH" firstAttribute="top" secondItem="9Lx-hV-hSL" secondAttribute="bottom" id="f3C-8M-kWF"/>
+                            <constraint firstItem="9Lx-hV-hSL" firstAttribute="top" secondItem="gBz-3L-1kl" secondAttribute="top" id="gpx-6f-jPQ"/>
                             <constraint firstItem="4A3-ce-Ezp" firstAttribute="top" secondItem="DoS-Od-opH" secondAttribute="bottom" constant="20" id="gz7-b8-sUv"/>
-                            <constraint firstItem="DoS-Od-opH" firstAttribute="top" secondItem="gBz-3L-1kl" secondAttribute="top" constant="10" id="qhd-RW-zV1"/>
                             <constraint firstItem="r1Q-Np-H1C" firstAttribute="top" secondItem="L02-Co-ceP" secondAttribute="bottom" constant="10" id="st5-fd-7aZ"/>
                             <constraint firstItem="L02-Co-ceP" firstAttribute="top" secondItem="4A3-ce-Ezp" secondAttribute="bottom" constant="8" symbolic="YES" id="vPl-xh-yV2"/>
                             <constraint firstItem="4A3-ce-Ezp" firstAttribute="centerX" secondItem="yxF-Cu-8C5" secondAttribute="centerX" id="yFz-JT-TtP"/>
@@ -513,7 +523,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSp-v5-HtV">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="724"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -521,7 +531,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HO-y0-Lt3">
-                                <rect key="frame" x="20" y="19" width="51" height="35"/>
+                                <rect key="frame" x="10" y="59" width="51" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=" "/>
                                 <connections>
@@ -532,12 +542,12 @@
                         <viewLayoutGuide key="safeArea" id="zS7-Gf-BAv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9HO-y0-Lt3" firstAttribute="top" secondItem="zS7-Gf-BAv" secondAttribute="top" id="5sK-B0-Dv9"/>
                             <constraint firstItem="zS7-Gf-BAv" firstAttribute="trailing" secondItem="RSp-v5-HtV" secondAttribute="trailing" id="T8j-FD-LU8"/>
-                            <constraint firstItem="RSp-v5-HtV" firstAttribute="top" secondItem="zS7-Gf-BAv" secondAttribute="top" id="Tgh-qL-Dbi"/>
                             <constraint firstItem="RSp-v5-HtV" firstAttribute="leading" secondItem="zS7-Gf-BAv" secondAttribute="leading" id="UCo-1E-3E2"/>
                             <constraint firstItem="zS7-Gf-BAv" firstAttribute="bottom" secondItem="RSp-v5-HtV" secondAttribute="bottom" id="UdB-cU-Vao"/>
-                            <constraint firstItem="9HO-y0-Lt3" firstAttribute="leading" secondItem="EOh-Zu-1sZ" secondAttribute="leading" constant="20" id="nRY-DS-N8G"/>
-                            <constraint firstItem="RSp-v5-HtV" firstAttribute="top" secondItem="9HO-y0-Lt3" secondAttribute="bottom" constant="5" id="oL7-gV-Iwc"/>
+                            <constraint firstItem="9HO-y0-Lt3" firstAttribute="leading" secondItem="EOh-Zu-1sZ" secondAttribute="leading" constant="10" id="nRY-DS-N8G"/>
+                            <constraint firstItem="RSp-v5-HtV" firstAttribute="top" secondItem="9HO-y0-Lt3" secondAttribute="bottom" id="oL7-gV-Iwc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -557,7 +567,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL9-m7-qBs">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="758"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -565,7 +575,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxD-1u-k3c">
-                                <rect key="frame" x="20" y="19" width="51" height="35"/>
+                                <rect key="frame" x="10" y="59" width="51" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=" "/>
                                 <connections>
@@ -577,11 +587,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aL9-m7-qBs" secondAttribute="bottom" id="331-e1-AF8"/>
-                            <constraint firstItem="aL9-m7-qBs" firstAttribute="top" secondItem="4vb-Eg-RTb" secondAttribute="top" id="4jM-aX-Fie"/>
-                            <constraint firstItem="oxD-1u-k3c" firstAttribute="leading" secondItem="mwZ-fW-iDe" secondAttribute="leading" constant="20" id="82T-G6-Dn2"/>
-                            <constraint firstItem="aL9-m7-qBs" firstAttribute="top" secondItem="oxD-1u-k3c" secondAttribute="bottom" constant="5" id="SZr-ky-AWG"/>
+                            <constraint firstItem="oxD-1u-k3c" firstAttribute="leading" secondItem="mwZ-fW-iDe" secondAttribute="leading" constant="10" id="82T-G6-Dn2"/>
+                            <constraint firstItem="oxD-1u-k3c" firstAttribute="top" secondItem="4vb-Eg-RTb" secondAttribute="top" id="iH5-As-7EB"/>
                             <constraint firstItem="aL9-m7-qBs" firstAttribute="leading" secondItem="mwZ-fW-iDe" secondAttribute="leading" id="q5X-8L-WAG"/>
                             <constraint firstAttribute="trailing" secondItem="aL9-m7-qBs" secondAttribute="trailing" id="rEU-RD-RHk"/>
+                            <constraint firstItem="aL9-m7-qBs" firstAttribute="top" secondItem="oxD-1u-k3c" secondAttribute="bottom" id="sKS-xU-9Ug"/>
                         </constraints>
                     </view>
                     <connections>
