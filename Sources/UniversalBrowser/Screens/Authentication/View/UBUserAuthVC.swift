@@ -8,7 +8,13 @@
 import UIKit
 import WebKit
 
+public protocol UBAuthStatus {
+    public func authToken(token:String?, status:Bool)
+}
+
 public class UBUserAuthVC: UIViewController{
+    
+    weak var delegate:UBAuthStatus?
 
     @IBOutlet weak var webView: WKWebView!
     @IBAction func dismissAction(_ sender: Any) {
@@ -65,6 +71,7 @@ extension UBUserAuthVC: WKScriptMessageHandler {
                 case "OK":
                     if let token = auth.token{
                         UserDefaults.standard.set(token, forKey: UserAuthConstant.authTokenKey)
+                        self.delegate?.authToken(token: token, status: true)
                     }
                     let actionSheet = UIAlertController(title: nil, message: "Login Successful", preferredStyle: .alert)
                     let myAction = UIAlertAction(title: "OK", style: .default){ (action) in
@@ -73,6 +80,7 @@ extension UBUserAuthVC: WKScriptMessageHandler {
                     actionSheet.addAction(myAction)
                     present(actionSheet,animated: true)
                 default:
+                    self.delegate?.authToken(token: nil, status: false)
                     let actionSheet = UIAlertController(title: nil, message: "Login Failed", preferredStyle: .alert)
                     let myAction = UIAlertAction(title: "OK", style: .destructive){ (action) in
                         self.dismiss(animated: true)

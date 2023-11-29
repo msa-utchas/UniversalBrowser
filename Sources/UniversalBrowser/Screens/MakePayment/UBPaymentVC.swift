@@ -9,6 +9,10 @@ import UIKit
 import WebKit
 import Combine
 
+public protocol UBPaymentStatus{
+    func payment(isPaymentSuccess: Bool)
+}
+
 enum ResponseStatus:String{
     case success = "success"
     case failed = "failed"
@@ -20,6 +24,7 @@ public class UBPaymentVC: UIViewController {
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    public var delegate: PaymentStatusProtocol?
     var viewModel: PaymentViewModel = PaymentViewModel()
     var cancellable = Set<AnyCancellable>()
     
@@ -51,8 +56,10 @@ public class UBPaymentVC: UIViewController {
             guard let self = self else { return }
             switch paymentResponseStatus {
             case .success:
+                self.delegate?.payment(isPaymentSuccess: true)
                 self.showPaymentAlert(message: "Payment was successful.")
             case .failed:
+                self.delegate?.payment(isPaymentSuccess: false)
                 self.showPaymentAlert(message: "Payment failed.")
             case .none:
                 print("Payment began")
