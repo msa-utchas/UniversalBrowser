@@ -13,12 +13,17 @@ enum ResponseStatus:String{
     case success = "success"
     case failed = "failed"
 }
+public protocol PaymentStatusProtocol{
+    func payment(isPaymentSuccess: Bool)
+}
 
 @available(iOS 13.0, *)
 public class PaymentVC: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     var viewModel: PaymentViewModel = PaymentViewModel()
     var cancellable = Set<AnyCancellable>()
+    
+    public var delegate: PaymentStatusProtocol?
     
     private var _paymentURL: String!
     private var _paymentSuccessURL: String!
@@ -50,8 +55,10 @@ public class PaymentVC: UIViewController {
             switch paymentResponseStatus {
             case .success:
                 showPaymentAlert(message: "Payment was successful.")
+                delegate?.payment(isPaymentSuccess: true)
             case .failed:
                 showPaymentAlert(message: "Payment failed.")
+                delegate?.payment(isPaymentSuccess: false)
             case .none:
                 print("Payment began")
             }
@@ -63,6 +70,7 @@ public class PaymentVC: UIViewController {
             let alertController = UIAlertController(title: message, message: nil, preferredStyle: .alert)
 
             let okAction = UIAlertAction(title: "Done", style: .default, handler: { _ in
+                
                 if let nav = self.navigationController{
                     nav.popViewController(animated: true)
                 }
