@@ -7,24 +7,10 @@
 
 import UIKit
 import WebKit
-public enum NavigationType {
-    case top
-    case bottom
-}
 
-public enum ButtonConfiguration {
-    case allButtons
-    case backAndForward
-    case reload
-}
-
-public enum OpeningMethod {
-    case fromUrlString
-    case fromFile
-}
 
 @available(iOS 13.0, *)
-public class InAppBrowserViewController: UIViewController, WKNavigationDelegate, WKUIDelegate{
+public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDelegate{
     
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     @IBOutlet weak var toggleButtonImage: UIImageView!
@@ -443,7 +429,7 @@ public class InAppBrowserViewController: UIViewController, WKNavigationDelegate,
 }
 
 @available(iOS 13.0, *)
-extension InAppBrowserViewController{
+extension UBInAppBrowserVC{
     @objc func loadNewUrl(_ notification: NSNotification) {
         if let urlString = notification.userInfo?["url"] as? String, let url = URL(string: urlString) {
             self.setUrl(url: urlString)
@@ -454,7 +440,7 @@ extension InAppBrowserViewController{
 }
 
 @available(iOS 13.0, *)
-extension InAppBrowserViewController: OptionsViewDelegate{
+extension UBInAppBrowserVC: OptionsViewDelegate{
     func setBookmark() {
         closeOptionView()
         CoredataManager.shared.insertBookmark(url: _url, title: _title)
@@ -502,7 +488,7 @@ extension InAppBrowserViewController: OptionsViewDelegate{
 
 
 @available(iOS 13.0, *)
-extension InAppBrowserViewController: UIDocumentPickerDelegate{
+extension UBInAppBrowserVC: UIDocumentPickerDelegate{
     func selectHTMLFile() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.html"], in: .import)
         documentPicker.delegate = self

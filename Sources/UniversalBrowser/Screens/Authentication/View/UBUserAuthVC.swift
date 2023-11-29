@@ -8,11 +8,14 @@
 import UIKit
 import WebKit
 
-public class UserAuthVC: UIViewController{
-    
-    public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "UserAuthVC") as! UserAuthVC
-    
+public class UBUserAuthVC: UIViewController{
+
     @IBOutlet weak var webView: WKWebView!
+
+    public func setInfo(url:String, handlers:[String]){
+        UserAuthConstant.loginUrl = url
+        UserAuthConstant.messageHandler = handlers
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ public class UserAuthVC: UIViewController{
     }
 }
 
-extension UserAuthVC {
+extension UBUserAuthVC {
     
     private func setupWebView(){
         self.webView.allowsBackForwardNavigationGestures = true
@@ -47,7 +50,7 @@ extension UserAuthVC {
 
 // MARK: - WKScriptMessageHandler
 
-extension UserAuthVC: WKScriptMessageHandler {
+extension UBUserAuthVC: WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
         if let bodyStr = message.body as? String, let data = bodyStr.data(using: .utf8){

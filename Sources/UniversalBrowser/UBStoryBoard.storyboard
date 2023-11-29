@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--In App Browser View Controller-->
+        <!--In App BrowserVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="InAppBrowserView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="InAppBrowserViewController" customModule="UniversalBrowser" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InAppBrowserView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="UBInAppBrowserVC" customModule="UniversalBrowser" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -422,10 +422,10 @@
             </objects>
             <point key="canvasLocation" x="119.84732824427481" y="3.5211267605633805"/>
         </scene>
-        <!--Html Css Editor Vc-->
+        <!--Html Css EditorVC-->
         <scene sceneID="TmM-8L-YGm">
             <objects>
-                <viewController storyboardIdentifier="HtmlCssEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="760-mm-nxN" customClass="HtmlCssEditorVc" customModule="UniversalBrowser" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HtmlCssEditor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="760-mm-nxN" customClass="UBHtmlCssEditorVC" customModule="UniversalBrowser" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yxF-Cu-8C5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,7 +507,7 @@
         <!--PaymentVC-->
         <scene sceneID="0UK-we-D0h">
             <objects>
-                <viewController storyboardIdentifier="PaymentVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KFK-I2-zAB" customClass="PaymentVC" customModule="UniversalBrowser" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KFK-I2-zAB" customClass="UBPaymentVC" customModule="UniversalBrowser" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EOh-Zu-1sZ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -541,7 +541,7 @@
         <!--User AuthVC-->
         <scene sceneID="Bi2-el-LQb">
             <objects>
-                <viewController storyboardIdentifier="UserAuthVC" id="clF-VW-If6" customClass="UserAuthVC" customModule="UniversalBrowser" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserAuthVC" id="clF-VW-If6" customClass="UBUserAuthVC" customModule="UniversalBrowser" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwZ-fW-iDe">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

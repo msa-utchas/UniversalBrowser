@@ -8,9 +8,7 @@
 import UIKit
 import WebKit
 
-public class HtmlCssEditorVc: UIViewController{
-    
-    public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "HtmlCssEditor") as! HtmlCssEditorVc
+public class UBHtmlCssEditorVC: UIViewController{
 
     @IBOutlet weak var textArea: UITextView!
     @IBOutlet weak var webView: WKWebView!
@@ -28,22 +26,20 @@ public class HtmlCssEditorVc: UIViewController{
     @IBAction func renderCode(_ sender: Any) {
         webView.loadHTMLString(capturedText, baseURL: nil)
     }
-    
-
 }
 
-extension HtmlCssEditorVc: UITextViewDelegate{
+extension UBHtmlCssEditorVC: UITextViewDelegate{
     public func textViewDidChange(_ textView: UITextView) {
         capturedText = textView.text!
         webView.loadHTMLString(capturedText, baseURL: nil)
         
     }
 }
-extension HtmlCssEditorVc: WKUIDelegate{
+extension UBHtmlCssEditorVC: WKUIDelegate{
     
 }
 
-extension HtmlCssEditorVc: WKNavigationDelegate{
+extension UBHtmlCssEditorVC: WKNavigationDelegate{
     
 }
 

@@ -15,7 +15,7 @@ enum ResponseStatus:String{
 }
 
 @available(iOS 13.0, *)
-public class PaymentVC: UIViewController {
+public class UBPaymentVC: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     var viewModel: PaymentViewModel = PaymentViewModel()
     var cancellable = Set<AnyCancellable>()
@@ -24,7 +24,6 @@ public class PaymentVC: UIViewController {
     private var _paymentSuccessURL: String!
     private var _paymentFailedURL: String!
     
-    public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
     public override func viewDidLoad() {
         super.viewDidLoad()
         if let url = URL(string: _paymentURL){
@@ -78,7 +77,7 @@ public class PaymentVC: UIViewController {
 
 
 @available(iOS 13.0, *)
-extension PaymentVC: WKNavigationDelegate{
+extension UBPaymentVC: WKNavigationDelegate{
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let urlAsString = navigationAction.request.url?.absoluteString.lowercased() else {
             return
