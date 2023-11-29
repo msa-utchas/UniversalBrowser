@@ -11,7 +11,10 @@ import WebKit
 public class UBUserAuthVC: UIViewController{
 
     @IBOutlet weak var webView: WKWebView!
-
+    @IBAction func dismissAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     public func setInfo(url:String, handlers:[String]){
         UserAuthConstant.loginUrl = url
         UserAuthConstant.messageHandler = handlers

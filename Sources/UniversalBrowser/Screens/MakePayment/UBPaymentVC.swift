@@ -17,6 +17,9 @@ enum ResponseStatus:String{
 @available(iOS 13.0, *)
 public class UBPaymentVC: UIViewController {
     @IBOutlet weak var webView: WKWebView!
+    @IBAction func dismissAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     var viewModel: PaymentViewModel = PaymentViewModel()
     var cancellable = Set<AnyCancellable>()
     

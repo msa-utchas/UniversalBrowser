@@ -520,6 +520,14 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HO-y0-Lt3">
+                                <rect key="frame" x="20" y="19" width="51" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=" "/>
+                                <connections>
+                                    <action selector="dismissAction:" destination="KFK-I2-zAB" eventType="touchUpInside" id="ZcW-Gn-R5T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zS7-Gf-BAv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -528,6 +536,8 @@
                             <constraint firstItem="RSp-v5-HtV" firstAttribute="top" secondItem="zS7-Gf-BAv" secondAttribute="top" id="Tgh-qL-Dbi"/>
                             <constraint firstItem="RSp-v5-HtV" firstAttribute="leading" secondItem="zS7-Gf-BAv" secondAttribute="leading" id="UCo-1E-3E2"/>
                             <constraint firstItem="zS7-Gf-BAv" firstAttribute="bottom" secondItem="RSp-v5-HtV" secondAttribute="bottom" id="UdB-cU-Vao"/>
+                            <constraint firstItem="9HO-y0-Lt3" firstAttribute="leading" secondItem="EOh-Zu-1sZ" secondAttribute="leading" constant="20" id="nRY-DS-N8G"/>
+                            <constraint firstItem="RSp-v5-HtV" firstAttribute="top" secondItem="9HO-y0-Lt3" secondAttribute="bottom" constant="5" id="oL7-gV-Iwc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -547,19 +557,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aL9-m7-qBs">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxD-1u-k3c">
+                                <rect key="frame" x="20" y="19" width="51" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=" "/>
+                                <connections>
+                                    <action selector="dismissAction:" destination="clF-VW-If6" eventType="touchUpInside" id="lnA-x9-jHA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4vb-Eg-RTb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aL9-m7-qBs" secondAttribute="bottom" id="331-e1-AF8"/>
-                            <constraint firstItem="aL9-m7-qBs" firstAttribute="top" secondItem="mwZ-fW-iDe" secondAttribute="top" id="4jM-aX-Fie"/>
+                            <constraint firstItem="aL9-m7-qBs" firstAttribute="top" secondItem="4vb-Eg-RTb" secondAttribute="top" id="4jM-aX-Fie"/>
+                            <constraint firstItem="oxD-1u-k3c" firstAttribute="leading" secondItem="mwZ-fW-iDe" secondAttribute="leading" constant="20" id="82T-G6-Dn2"/>
+                            <constraint firstItem="aL9-m7-qBs" firstAttribute="top" secondItem="oxD-1u-k3c" secondAttribute="bottom" constant="5" id="SZr-ky-AWG"/>
                             <constraint firstItem="aL9-m7-qBs" firstAttribute="leading" secondItem="mwZ-fW-iDe" secondAttribute="leading" id="q5X-8L-WAG"/>
                             <constraint firstAttribute="trailing" secondItem="aL9-m7-qBs" secondAttribute="trailing" id="rEU-RD-RHk"/>
                         </constraints>
@@ -570,7 +590,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yzb-RU-qkK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120" y="819"/>
+            <point key="canvasLocation" x="119.84732824427481" y="818.30985915492965"/>
         </scene>
     </scenes>
     <resources>
@@ -579,6 +599,7 @@
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.right.circle" catalog="system" width="128" height="123"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
