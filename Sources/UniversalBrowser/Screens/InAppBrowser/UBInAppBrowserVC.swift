@@ -66,6 +66,8 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
     private var _title: String = "apple"
     private var _floatingExitButtonBackgroundColor: UIColor = .green
     private var _floatingExitButtonImage: UIImage? = UIImage(systemName: "arrow.backward")
+    private var _exitButtonImage: UIImage? = UIImage(systemName: "arrow.backward")
+
     
     private var _customOptionsToggle: Bool = true
     private var _isOptionButtonEnabled = false
@@ -152,13 +154,15 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
     
     public func setColorTheme (background: UIColor, enabled: UIColor, disabled: UIColor){
         _uiBackgroundColor = background
-        reloadButtonImage = reloadButtonImage?.maskWithColor(color: enabled)
-        forwardButtonImage = forwardButtonImage?.maskWithColor(color: enabled)
-        backButtonImage =  backButtonImage?.maskWithColor(color: enabled)
+        _reloadButtonImage = _reloadButtonImage?.maskWithColor(color: enabled)
+        _forwardButtonImage = _forwardButtonImage?.maskWithColor(color: enabled)
+        _backButtonImage =  _backButtonImage?.maskWithColor(color: enabled)
         
-        forwardButtonImageDisabled = forwardButtonImageDisabled?.maskWithColor(color: disabled)
-        backButtonImageDisabled =  backButtonImageDisabled?.maskWithColor(color: disabled)
-        toggleButtonImage = toggleButtonImage?.maskWithColor(color: enabled)
+        _forwardButtonImageDisabled = _forwardButtonImageDisabled?.maskWithColor(color: disabled)
+        _backButtonImageDisabled =  _backButtonImageDisabled?.maskWithColor(color: disabled)
+        _toggleButtonImage = _toggleButtonImage?.maskWithColor(color: enabled)
+        _exitButtonImage = _exitButtonImage?.maskWithColor(color: enabled)
+        _floatingExitButtonImage = _floatingExitButtonImage?.maskWithColor(color: enabled)
     }
     
     func setupBackForwardButton(){
@@ -376,7 +380,7 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
         bottomForwardButtonImage.image = _forwardButtonImageDisabled
         bottomBackButtonImage.image = _backButtonImageDisabled
         toggleButtonImage.image = _toggleButtonImage
-        
+        topBackButtonImage.image = _exitButtonImage
         switch _buttonConfiguration {
         case .allButtons:
             break

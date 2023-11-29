@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import Combine
 
-public protocol UBPaymentStatus{
+public protocol UBPaymentStatus: AnyObject{
     func payment(isPaymentSuccess: Bool)
 }
 
@@ -24,7 +24,7 @@ public class UBPaymentVC: UIViewController {
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    public var delegate: PaymentStatusProtocol?
+    public weak var delegate: UBPaymentStatus?
     var viewModel: PaymentViewModel = PaymentViewModel()
     var cancellable = Set<AnyCancellable>()
     

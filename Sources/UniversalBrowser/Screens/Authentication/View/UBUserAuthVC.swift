@@ -8,13 +8,13 @@
 import UIKit
 import WebKit
 
-public protocol UBAuthStatus {
-    public func authToken(token:String?, status:Bool)
+public protocol UBAuthStatus:AnyObject {
+    func authToken(token:String?, status:Bool)
 }
 
 public class UBUserAuthVC: UIViewController{
     
-    weak var delegate:UBAuthStatus?
+    public weak var delegate:UBAuthStatus?
 
     @IBOutlet weak var webView: WKWebView!
     @IBAction func dismissAction(_ sender: Any) {
