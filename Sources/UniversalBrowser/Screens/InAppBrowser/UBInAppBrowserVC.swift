@@ -45,9 +45,7 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
     
     @IBOutlet weak var topExitButton: UIButton!
     @IBOutlet weak var floatingExitButton: UIButton!
-    
-    public static let viewController = UIStoryboard(name: "UBStoryBoard", bundle: Bundle.module).instantiateViewController(withIdentifier: "InAppBrowserView") as! InAppBrowserViewController
-    
+
     private var _uiBackgroundColor: UIColor = .white
     private var _navigationType: NavigationType = .top
     private var _isFloatingButtonEnabled: Bool = false
