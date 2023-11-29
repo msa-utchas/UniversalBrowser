@@ -38,7 +38,7 @@
                                                         <rect key="frame" x="8" y="10.999999999999998" width="28" height="22.333333333333329"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="fGJ-QR-xty" firstAttribute="leading" secondItem="jEe-pl-tZW" secondAttribute="leading" id="5KJ-JC-zxq"/>
                                                     <constraint firstItem="Zcv-Z6-VIN" firstAttribute="leading" secondItem="jEe-pl-tZW" secondAttribute="leading" constant="8" id="FUx-OG-za5"/>
@@ -71,7 +71,7 @@
                                                                 <rect key="frame" x="7.9999999999999858" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="sGq-in-oKB" firstAttribute="leading" secondItem="XoO-wO-pQ9" secondAttribute="leading" constant="8" id="7tw-mN-5Dh"/>
                                                             <constraint firstAttribute="width" constant="44" id="GOV-U0-1za"/>
@@ -96,7 +96,7 @@
                                                                 <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="BjU-Tt-aZw" secondAttribute="trailing" constant="8" id="FQw-Pf-l00"/>
                                                             <constraint firstItem="BjU-Tt-aZw" firstAttribute="top" secondItem="c0g-To-WXF" secondAttribute="top" constant="8" id="QnS-07-QwB"/>
@@ -125,7 +125,7 @@
                                                                 <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="628-0N-210" firstAttribute="leading" secondItem="Lri-d7-Uji" secondAttribute="leading" constant="8" id="13i-cS-TyG"/>
                                                             <constraint firstAttribute="width" constant="44" id="D3V-np-bcz"/>
@@ -156,7 +156,7 @@
                                                         <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="i1W-OE-ccB" secondAttribute="trailing" constant="8" id="4Pv-an-M1k"/>
                                                     <constraint firstAttribute="trailing" secondItem="bgj-8P-ahy" secondAttribute="trailing" id="5Wq-mf-hs8"/>
@@ -225,7 +225,7 @@
                                                         <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="ZFn-pX-PKM" firstAttribute="leading" secondItem="aWd-TB-dtm" secondAttribute="leading" id="C9L-MG-i7v"/>
                                                     <constraint firstAttribute="bottom" secondItem="ZFn-pX-PKM" secondAttribute="bottom" id="Nmy-b3-cZU"/>
@@ -254,7 +254,7 @@
                                                         <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="2Vn-vM-hB4"/>
                                                     <constraint firstAttribute="bottom" secondItem="iak-4X-ua2" secondAttribute="bottom" id="Akt-x0-kDZ"/>
@@ -283,7 +283,7 @@
                                                         <rect key="frame" x="8" y="8.9999999999999982" width="28" height="26.666666666666664"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="2um-Wn-w8j"/>
                                                     <constraint firstAttribute="trailing" secondItem="0ud-6N-8Wm" secondAttribute="trailing" id="4lt-4c-bkW"/>

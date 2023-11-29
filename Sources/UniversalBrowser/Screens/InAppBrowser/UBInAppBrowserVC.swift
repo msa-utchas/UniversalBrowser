@@ -46,6 +46,7 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
     @IBOutlet weak var topExitButton: UIButton!
     @IBOutlet weak var floatingExitButton: UIButton!
 
+    private var _toggleButtonImage = UIImage(systemName: "ellipsis.circle")
     private var _uiBackgroundColor: UIColor = .white
     private var _navigationType: NavigationType = .top
     private var _isFloatingButtonEnabled: Bool = false
@@ -147,6 +148,17 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
             }
         }
         
+    }
+    
+    public func setColorTheme (background: UIColor, enabled: UIColor, disabled: UIColor){
+        _uiBackgroundColor = background
+        reloadButtonImage = reloadButtonImage?.maskWithColor(color: enabled)
+        forwardButtonImage = forwardButtonImage?.maskWithColor(color: enabled)
+        backButtonImage =  backButtonImage?.maskWithColor(color: enabled)
+        
+        forwardButtonImageDisabled = forwardButtonImageDisabled?.maskWithColor(color: disabled)
+        backButtonImageDisabled =  backButtonImageDisabled?.maskWithColor(color: disabled)
+        toggleButtonImage = toggleButtonImage?.maskWithColor(color: enabled)
     }
     
     func setupBackForwardButton(){
@@ -363,7 +375,7 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
         topBackButtonImage.image = _backButtonImageDisabled
         bottomForwardButtonImage.image = _forwardButtonImageDisabled
         bottomBackButtonImage.image = _backButtonImageDisabled
-        
+        toggleButtonImage.image = _toggleButtonImage
         
         switch _buttonConfiguration {
         case .allButtons:
