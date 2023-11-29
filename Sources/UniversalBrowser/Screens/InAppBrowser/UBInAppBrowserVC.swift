@@ -163,6 +163,7 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
         _toggleButtonImage = _toggleButtonImage?.maskWithColor(color: enabled)
         _exitButtonImage = _exitButtonImage?.maskWithColor(color: enabled)
         _floatingExitButtonImage = _floatingExitButtonImage?.maskWithColor(color: enabled)
+        _floatingExitButtonBackgroundColor = background
     }
     
     func setupBackForwardButton(){
@@ -380,7 +381,7 @@ public class UBInAppBrowserVC: UIViewController, WKNavigationDelegate, WKUIDeleg
         bottomForwardButtonImage.image = _forwardButtonImageDisabled
         bottomBackButtonImage.image = _backButtonImageDisabled
         toggleButtonImage.image = _toggleButtonImage
-        topBackButtonImage.image = _exitButtonImage
+        topExitButtonImage.image = _exitButtonImage
         switch _buttonConfiguration {
         case .allButtons:
             break
